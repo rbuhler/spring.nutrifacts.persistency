@@ -1,4 +1,4 @@
-package io.github.rbuhler.nutrifactspersistency;
+package io.github.rbuhler.nutrifactspersistency.Entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
