@@ -19,12 +19,7 @@ public class Item {
 
     protected Item(){}
 
-    public Item (int barcode,
-                 String identification,
-                 int size,
-                 UnitOfMeasure unitOfMeasure,
-                 Company company,
-                 Manufacturer manufacturer){
+    public Item (int barcode, String identification, int size, UnitOfMeasure unitOfMeasure, Company company, Manufacturer manufacturer){
         this.barcode = barcode;
         this.identification = identification;
         this.size = size;
