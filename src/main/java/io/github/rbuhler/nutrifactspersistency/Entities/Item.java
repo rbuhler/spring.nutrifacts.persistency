@@ -13,19 +13,15 @@ public class Item {
     private int barcode;
     private String identification;
     private int size;
-    private UnitOfMeasure unitOfMeasure;
-    private Company company;
-    private Manufacturer manufacturer;
+    private String unitOfMeasure;
 
     protected Item(){}
 
-    public Item (int barcode, String identification, int size, UnitOfMeasure unitOfMeasure, Company company, Manufacturer manufacturer){
+    public Item (int barcode, String identification, int size, String unitOfMeasure ){
         this.barcode = barcode;
         this.identification = identification;
         this.size = size;
         this.unitOfMeasure = unitOfMeasure;
-        this.company = company;
-        this.manufacturer = manufacturer;
     }
     /* Getter_Setter */
 
