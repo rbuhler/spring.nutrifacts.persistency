@@ -1,0 +1,8 @@
+create table item (
+    ID              INTEGER NOT NULL PRIMARY KEY,
+    BARCODE         INTEGER,
+    IDENTIFICATION  CHARACTER VARYING (255),
+    SIZE            INTEGER,
+    UNITOFMEASURE   CHARACTER VARYING (255)
+);
+
