@@ -10,18 +10,20 @@ public class Item {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-    private int barcode;
+    private String barcode;
     private String identification;
-    private int size;
+    private int quantity;
     private String unitOfMeasure;
+    private String image;
 
     protected Item(){}
 
-    public Item (int barcode, String identification, int size, String unitOfMeasure ){
+    public Item (String barcode, String identification, int quantity, String unitOfMeasure, String image ){
         this.barcode = barcode;
         this.identification = identification;
-        this.size = size;
+        this.quantity = quantity;
         this.unitOfMeasure = unitOfMeasure;
+        this.image = image;
     }
     /* Getter_Setter */
 
