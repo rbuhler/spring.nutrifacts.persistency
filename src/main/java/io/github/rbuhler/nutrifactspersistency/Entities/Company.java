@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Company {
         @Id
-        @GeneratedValue(strategy= GenerationType.AUTO)
+        @GeneratedValue(strategy= GenerationType.IDENTITY)
         private Long id;
         private String commercial_name;
         private String business_name;

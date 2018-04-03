@@ -1,29 +1,29 @@
-create table item (
-    ID              INTEGER NOT NULL PRIMARY KEY,
-    BARCODE         CHARACTER VARYING (255),
-    IDENTIFICATION  CHARACTER VARYING (255),
+CREATE SCHEMA IF NOT EXISTS public;
+
+create table if NOT EXISTS item (
+    ID              bigserial PRIMARY KEY,
+    BARCODE         VARCHAR(255),
+    IDENTIFICATION  VARCHAR(255),
     QUANTITY        INTEGER,
-    UNITOFMEASURE   CHARACTER VARYING (255),
-    IMAGE           CHARACTER VARYING (255)
+    UNITOFMEASURE   VARCHAR(255),
+    IMAGE           VARCHAR(255)
 );
 
 create table unitofmeasure (
-    ID              INTEGER, NOT NULL PRIMARY KEY,
-    SHORTID         CHARACTER VARYING (255),
-    DESCRIPTION     CHARACTER VARYING (255),
-    GREATNESS       CHARACTER VARYING (255)
+    ID              bigserial PRIMARY KEY,
+    SHORTID         VARCHAR(255),
+    DESCRIPTION     VARCHAR(255),
+    GREATNESS       VARCHAR(255)
 );
 
-create table manufacturer (
-    ID              INTEGER, NOT NULL PRIMARY KEY,
-    COMERCIAL_NAME  CHARACTER VARYING (255),
-    BUSINESS_NAME   CHARACTER VARYING (255),
-
+create table if NOT EXISTS manufacturer (
+    ID              bigserial PRIMARY KEY,
+    COMERCIAL_NAME  VARCHAR(255),
+    BUSINESS_NAME   VARCHAR(255),
 );
 
-create table company (
-    ID              INTEGER, NOT NULL PRIMARY KEY,
-    COMERCIAL_NAME  CHARACTER VARYING (255),
-    BUSINESS_NAME   CHARACTER VARYING (255),
-
+create table if NOT EXISTS company (
+    ID              bigserial PRIMARY KEY,
+    COMERCIAL_NAME  VARCHAR(255),
+    BUSINESS_NAME   VARCHAR(255),
 );
