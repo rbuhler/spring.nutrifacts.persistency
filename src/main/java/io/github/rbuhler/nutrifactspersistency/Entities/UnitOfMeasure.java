@@ -10,7 +10,7 @@ public class UnitOfMeasure {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long index;
     private String shortId;
     private String description;
     private String greatness;
@@ -22,6 +22,10 @@ public class UnitOfMeasure {
         this.description = description;
         this.greatness = greatness;
     }
+
+    public Long getIndex() { return index; }
+
+    public void setIndex(Long index) { this.index = index; }
 
     public String getShortId() {
         return shortId;

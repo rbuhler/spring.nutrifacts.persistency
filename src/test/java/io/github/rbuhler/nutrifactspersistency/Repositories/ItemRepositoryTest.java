@@ -19,7 +19,7 @@ public class ItemRepositoryTest {
     private ItemRepository repository;
 
     @Test
-    public void findById_givenItemAExists_sholdReturnItemA(){
+    public void findByBarcode_givenItemAExists_sholdReturnItemA(){
         Item itemA;
 
         itemA = new Item("1234567890123", "Product A", 180, "gr", "http://www.picture.com/itemA");

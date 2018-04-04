@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Item {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
+    private Long index;
     private String barcode;
     private String identification;
     private int quantity;
@@ -26,12 +26,12 @@ public class Item {
         this.image = image;
     }
 
-    public Long getId() {
-        return id;
+    public Long getIndex() {
+        return index;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIndex(Long index) {
+        this.index = index;
     }
 
     public String getBarcode() {
@@ -73,6 +73,5 @@ public class Item {
     public void setImage(String image) {
         this.image = image;
     }
-    /* Getter_Setter */
 
 }

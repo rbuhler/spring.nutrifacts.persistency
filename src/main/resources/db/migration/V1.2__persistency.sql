@@ -1,7 +1,7 @@
-CREATE SCHEMA IF NOT EXISTS public;
+CREATE SCHEMA if NOT EXISTS public;
 
 create table if NOT EXISTS item (
-    ID              bigserial PRIMARY KEY,
+    INDEX           bigserial PRIMARY KEY,
     BARCODE         VARCHAR(255),
     IDENTIFICATION  VARCHAR(255),
     QUANTITY        INTEGER,
@@ -10,20 +10,20 @@ create table if NOT EXISTS item (
 );
 
 create table unitofmeasure (
-    ID              bigserial PRIMARY KEY,
+    INDEX           bigserial PRIMARY KEY,
     SHORTID         VARCHAR(255),
     DESCRIPTION     VARCHAR(255),
     GREATNESS       VARCHAR(255)
 );
 
 create table if NOT EXISTS manufacturer (
-    ID              bigserial PRIMARY KEY,
+    INDEX           bigserial PRIMARY KEY,
     COMERCIAL_NAME  VARCHAR(255),
     BUSINESS_NAME   VARCHAR(255),
 );
 
 create table if NOT EXISTS company (
-    ID              bigserial PRIMARY KEY,
+    INDEX           bigserial PRIMARY KEY,
     COMERCIAL_NAME  VARCHAR(255),
     BUSINESS_NAME   VARCHAR(255),
 );

@@ -11,5 +11,5 @@ import java.util.List;
 @RepositoryRestResource(collectionResourceRel = "item", path = "item")
 public interface ItemRepository extends PagingAndSortingRepository<Item, Long> {
 
-    Item findByBarcode(@Param("barcode") String barcode);
+    List<Item> findByBarcode(@Param("barcode") String barcode);
 }
