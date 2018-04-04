@@ -1,6 +1,6 @@
 package io.github.rbuhler.nutrifactspersistency;
 
-import org.flywaydb.core.Flyway;
+//import org.flywaydb.core.Flyway;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -11,7 +11,7 @@ public class NutrifactsPersistencyApplication {
 
 		SpringApplication.run(NutrifactsPersistencyApplication.class, args);
 
-		// Create the Flyway instance
+/**		// Create the Flyway instance
 		Flyway flyway = new Flyway();
 
 		// Point it to the database
@@ -19,5 +19,6 @@ public class NutrifactsPersistencyApplication {
 
 		// Start the migration
 		flyway.migrate();
+ **/
 	}
 }
