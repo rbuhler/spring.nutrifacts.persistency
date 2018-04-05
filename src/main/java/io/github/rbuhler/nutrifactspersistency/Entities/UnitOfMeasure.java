@@ -1,5 +1,7 @@
 package io.github.rbuhler.nutrifactspersistency.Entities;
 
+import io.github.rbuhler.nutrifactspersistency.localization.Languages;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,21 +13,32 @@ public class UnitOfMeasure {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long index;
+    private Languages lang;
     private String shortId;
     private String description;
     private String greatness;
 
-    protected UnitOfMeasure(){}
+    protected UnitOfMeasure() {
+    }
 
-    public UnitOfMeasure( String shortId, String description, String greatness){
+    public UnitOfMeasure(Languages lang, String shortId, String description, String greatness) {
+        this.lang = lang;
         this.shortId = shortId;
         this.description = description;
         this.greatness = greatness;
     }
 
-    public Long getIndex() { return index; }
+    public Long getIndex() {
+        return index;
+    }
 
-    public void setIndex(Long index) { this.index = index; }
+    public Languages getLang() {
+        return lang;
+    }
+
+    public void setIndex(Long index) {
+        this.index = index;
+    }
 
     public String getShortId() {
         return shortId;
@@ -33,6 +46,10 @@ public class UnitOfMeasure {
 
     public void setShortId(String shortId) {
         this.shortId = shortId;
+    }
+
+    public void setLang(Languages lang) {
+        this.lang = lang;
     }
 
     public String getDescription() {
