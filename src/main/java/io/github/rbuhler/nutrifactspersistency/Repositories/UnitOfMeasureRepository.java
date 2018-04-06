@@ -1,8 +1,5 @@
 package io.github.rbuhler.nutrifactspersistency.Repositories;
 
-import java.util.List;
-
-import io.github.rbuhler.nutrifactspersistency.Entities.Item;
 import io.github.rbuhler.nutrifactspersistency.Entities.UnitOfMeasure;
 import io.github.rbuhler.nutrifactspersistency.localization.Languages;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -16,7 +13,7 @@ public interface UnitOfMeasureRepository extends PagingAndSortingRepository<Unit
     UnitOfMeasure findByIndex(@Param("index") Long index);
 
     /* SHORT ID KEY */
-    UnitOfMeasure findByShortId(@Param("shortId") String shortId, @Param("lang") String lang);
-    Boolean existsByShortId(@Param("shortId") String shortId, @Param("lang") Languages lang);
+    UnitOfMeasure findByShortIdAndLang(@Param("shortId") String shortId, @Param("lang") Languages lang);
+    Boolean existsByShortIdAndLang(@Param("shortId") String shortId, @Param("lang") Languages lang);
 
 }
