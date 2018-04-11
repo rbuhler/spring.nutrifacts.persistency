@@ -11,5 +11,5 @@ import java.util.List;
 @RepositoryRestResource(collectionResourceRel = "manufacturer", path = "manufacturer")
 public interface ManufacturerRepository extends PagingAndSortingRepository<Manufacturer, Long> {
 
-    List<Manufacturer> findByIndex(@Param("index") Long index);
+    Manufacturer findByIndex(@Param("index") Long index);
 }

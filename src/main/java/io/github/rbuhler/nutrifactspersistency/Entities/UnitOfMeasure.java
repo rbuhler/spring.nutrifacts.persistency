@@ -31,41 +31,34 @@ public class UnitOfMeasure {
     public Long getIndex() {
         return index;
     }
+    public void setIndex(Long index) { this.index = index; }
 
+    public void setLang(Languages lang) {
+        this.lang = lang;
+    }
     public Languages getLang() {
         return lang;
-    }
-
-    public void setIndex(Long index) {
-        this.index = index;
-    }
-
-    public String getShortId() {
-        return shortId;
     }
 
     public void setShortId(String shortId) {
         this.shortId = shortId;
     }
-
-    public void setLang(Languages lang) {
-        this.lang = lang;
-    }
-
-    public String getDescription() {
-        return description;
+    public String getShortId() {
+        return shortId;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public String getGreatness() {
-        return greatness;
+    public String getDescription() {
+        return description;
     }
 
     public void setGreatness(String greatness) {
         this.greatness = greatness;
+    }
+    public String getGreatness() {
+        return greatness;
     }
 
 }

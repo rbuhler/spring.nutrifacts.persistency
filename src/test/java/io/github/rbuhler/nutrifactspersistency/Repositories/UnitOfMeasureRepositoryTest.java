@@ -3,6 +3,7 @@ package io.github.rbuhler.nutrifactspersistency.Repositories;
 import io.github.rbuhler.nutrifactspersistency.Entities.UnitOfMeasure;
 import io.github.rbuhler.nutrifactspersistency.NutrifactsPersistencyApplication;
 import io.github.rbuhler.nutrifactspersistency.localization.Languages;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,29 +24,83 @@ public class UnitOfMeasureRepositoryTest {
     @Autowired
     private UnitOfMeasureRepository repository;
 
-    @Test
-    public void findByIndex_givenUOMExists_shouldReturnUOM(){
+    @Before
+    public void setUp(){
 
-            List<UnitOfMeasure>     UOMListPayload,
-                                    UOMListExpected;
-            UnitOfMeasure           UOMActual;
+        List<UnitOfMeasure>     UOMListPayload;
+        UOMListPayload = new ArrayList<>();
 
-            UOMListPayload = new ArrayList<>();
-            UOMListExpected = new ArrayList<>();
+        UOMListPayload.add(0, new UnitOfMeasure(Languages.PT_BR, "Kg", "Quilograma", "Peso"));
+        UOMListPayload.add(1, new UnitOfMeasure(Languages.EN_US, "Kg", "Kilogram", "Weight"));
+        UOMListPayload.add(2, new UnitOfMeasure(Languages.PT_BR, "Km", "Quilometro", "Distância"));
+        UOMListPayload.add(3, new UnitOfMeasure(Languages.EN_US, "Km", "Kilometer", "Distance"));
 
-            UOMListPayload.add(0, new UnitOfMeasure(Languages.PT_BR, "Kg", "Quilograma", "Peso"));
-            UOMListPayload.add(1, new UnitOfMeasure(Languages.EN_US, "Kg", "Kilogram", "Weight"));
-            UOMListPayload.add(2, new UnitOfMeasure(Languages.PT_BR, "Km", "Quilometro", "Distância"));
-            UOMListPayload.add(3, new UnitOfMeasure(Languages.EN_US, "Km", "Kilometer", "Distance"));
-
-            UOMListExpected.add(0, UOMListPayload.get(0));
-            UOMListExpected.add(1, UOMListPayload.get(1));
-            UOMListExpected.add(2, UOMListPayload.get(2));
-            UOMListExpected.add(3, UOMListPayload.get(3));
-
-        for(int count = 0; count < UOMListExpected.size(); count++ ) {
+        for(int count = 0; count < UOMListPayload.size(); count++ ) {
             repository.save(UOMListPayload.get(count));
         }
+    }
+
+    @Test
+    public void findByShortId_givenUOMExists_shouldReturnUOM(){
+        List<UnitOfMeasure>     UOMListExpected;
+        UnitOfMeasure           UOMActual;
+
+        UnitOfMeasure           UOM_pt_kg,
+                                UOM_en_kg,
+                                UOM_pt_km,
+                                UOM_en_km;
+
+        UOMListExpected = new ArrayList<>();
+
+        UOM_pt_kg = new UnitOfMeasure(Languages.PT_BR, "Kg", "Quilograma", "Peso");
+        UOM_pt_kg.setIndex(1L);
+
+        UOM_en_kg =new UnitOfMeasure(Languages.EN_US, "Kg", "Kilogram", "Weight");
+        UOM_en_kg.setIndex(2L);
+
+        UOM_pt_km = new UnitOfMeasure(Languages.PT_BR, "Km", "Quilometro", "Distância");
+        UOM_pt_km.setIndex(3L);
+
+        UOM_en_km = new UnitOfMeasure(Languages.EN_US, "Km", "Kilometer", "Distance");
+        UOM_en_km.setIndex(4L);
+
+        UOMListExpected.add(0, UOM_pt_kg);
+        UOMListExpected.add(1, UOM_en_kg);
+        UOMListExpected.add(2, UOM_pt_km);
+        UOMListExpected.add(3, UOM_en_kg);
+
+        for(int count = 0; count < UOMListExpected.size(); count++ ){
+            UOMActual = repository.findByShortIdAndLang( UOMListExpected.get(count).getShortId(), UOMListExpected.get(count).getLang() );
+            assertReflectionEquals("Record ["+ count +"] failed.", UOMListExpected.get(count), UOMActual);
+        }
+    }
+    @Test
+    public void findByIndex_givenUOMExists_shouldReturnUOM(){
+        List<UnitOfMeasure>     UOMListExpected;
+        UnitOfMeasure           UOMActual,
+                                UOM_pt_kg,
+                                UOM_en_kg,
+                                UOM_pt_km,
+                                UOM_en_km;
+
+        UOMListExpected = new ArrayList<>();
+
+        UOM_pt_kg = new UnitOfMeasure(Languages.PT_BR, "Kg", "Quilograma", "Peso");
+        UOM_pt_kg.setIndex(1L);
+
+        UOM_en_kg =new UnitOfMeasure(Languages.EN_US, "Kg", "Kilogram", "Weight");
+        UOM_en_kg.setIndex(2L);
+
+        UOM_pt_km = new UnitOfMeasure(Languages.PT_BR, "Km", "Quilometro", "Distância");
+        UOM_pt_km.setIndex(3L);
+
+        UOM_en_km = new UnitOfMeasure(Languages.EN_US, "Km", "Kilometer", "Distance");
+        UOM_en_km.setIndex(4L);
+
+        UOMListExpected.add(0, UOM_pt_kg);
+        UOMListExpected.add(1, UOM_en_kg);
+        UOMListExpected.add(2, UOM_pt_km);
+        UOMListExpected.add(3, UOM_en_km);
 
         for(int count = 0; count < UOMListExpected.size(); count++ ){
             Long index = new Long( count+1 );
