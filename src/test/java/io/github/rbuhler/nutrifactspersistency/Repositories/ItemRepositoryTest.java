@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
+import sun.font.TrueTypeFont;
+
+import javax.validation.constraints.AssertTrue;
 
 import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEquals;
 
@@ -64,5 +67,20 @@ public class ItemRepositoryTest {
         itemListActual = repository.findByIndex(index);
 
         assertReflectionEquals(itemExpected, itemListActual);
+    }
+    @Test
+    public void getter_setter(){
+        Item    actualItem,
+                expectedItem;
+
+        actualItem = new Item("1234567890123", "Product A", 180, "gr", "http://www.picture.com/itemActual");
+        expectedItem = new Item( );
+
+        expectedItem.setBarcode(actualItem.getBarcode());
+        expectedItem.setIdentification(actualItem.getIdentification());
+        expectedItem.setImage(actualItem.getImage());
+        expectedItem.setIndex(actualItem.getIndex());
+        expectedItem.setQuantity(actualItem.getQuantity());
+        expectedItem.setUnitOfMeasure(actualItem.getUnitOfMeasure());
     }
 }

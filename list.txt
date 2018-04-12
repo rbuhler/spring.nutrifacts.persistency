@@ -1,0 +1,12 @@
+core.repositoryformatversion=0
+core.filemode=false
+core.bare=false
+core.logallrefupdates=true
+core.symlinks=false
+core.ignorecase=true
+remote.origin.url=https://github.com/rbuhler/spring.nutrifacts.persistency.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+user.email=rodrigo.buhler@ymail.com
+user.name=rbuhler
+http.proxy=http://proxy.wdf.sap.corp:8080
+https.proxy=http://proxy.wdf.sap.corp:8080

@@ -109,4 +109,20 @@ public class UnitOfMeasureRepositoryTest {
             assertReflectionEquals("Record ["+ count +"] failed.", UOMListExpected.get(count), UOMActual);
         }
     }
+    @Test
+    public void getter_setter(){
+        UnitOfMeasure actual,
+                    expected;
+
+        expected = new UnitOfMeasure();
+        actual = new UnitOfMeasure(Languages.PT_BR, "Kg", "Quilograma", "Peso");
+
+        expected.setIndex(actual.getIndex());
+        expected.setDescription(actual.getDescription());
+        expected.setGreatness(actual.getGreatness());
+        expected.setLang(actual.getLang());
+        expected.setShortId(actual.getShortId());
+    }
+
+
 }

@@ -11,5 +11,5 @@ import java.util.List;
 @RepositoryRestResource(collectionResourceRel = "company", path = "company")
 public interface CompanyRepository extends PagingAndSortingRepository<Company, Long> {
 
-    List<Company> findByIndex(@Param("index") String index);
+    Company findByIndex(@Param("index") Long index);
 }

@@ -54,7 +54,5 @@ public class ManufacturerTest {
         assertReflectionEquals("Manufacturer B  comparison failed", expectedManufacturerB, actualManufacturer);
 
     }
-
-
 }
 

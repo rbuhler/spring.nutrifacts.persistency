@@ -16,7 +16,7 @@ public class Item {
     private String unitOfMeasure;
     private String image;
 
-    protected Item(){}
+    public Item(){}
 
     public Item (String barcode, String identification, int quantity, String unitOfMeasure, String image ){
         this.barcode = barcode;

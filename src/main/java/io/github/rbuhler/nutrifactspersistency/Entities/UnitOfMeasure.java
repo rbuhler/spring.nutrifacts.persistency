@@ -18,7 +18,7 @@ public class UnitOfMeasure {
     private String description;
     private String greatness;
 
-    protected UnitOfMeasure() {
+    public UnitOfMeasure() {
     }
 
     public UnitOfMeasure(Languages lang, String shortId, String description, String greatness) {
