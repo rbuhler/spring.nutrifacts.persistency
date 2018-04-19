@@ -1,16 +1,18 @@
 package io.github.rbuhler.nutrifactspersistency.Entities;
 
-import org.springframework.boot.autoconfigure.web.ResourceProperties;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.List;
 
 @Entity
 public class NutriFacts {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long index;
-    private Long table;
+    private Long nutriTable;
+    @Id
+    private Nutrient nutrient;
+    private float quantity;
+    private UnitOfMeasure unit_of_measure;
+    private float daily_value;
 }

@@ -1,6 +1,6 @@
 package io.github.rbuhler.nutrifactspersistency.Entities;
 
-import io.github.rbuhler.nutrifactspersistency.localization.Languages;
+import io.github.rbuhler.nutrifactspersistency.Enum.Languages;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

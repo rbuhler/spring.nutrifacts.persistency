@@ -1,7 +1,7 @@
 package io.github.rbuhler.nutrifactspersistency.Repositories;
 
 import io.github.rbuhler.nutrifactspersistency.Entities.UnitOfMeasure;
-import io.github.rbuhler.nutrifactspersistency.localization.Languages;
+import io.github.rbuhler.nutrifactspersistency.Enum.Languages;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;

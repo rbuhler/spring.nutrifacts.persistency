@@ -1,4 +1,4 @@
-package io.github.rbuhler.nutrifactspersistency.localization;
+package io.github.rbuhler.nutrifactspersistency.Enum;
 
 public enum Languages {
     PT_BR,      // Portuguese from Brazil

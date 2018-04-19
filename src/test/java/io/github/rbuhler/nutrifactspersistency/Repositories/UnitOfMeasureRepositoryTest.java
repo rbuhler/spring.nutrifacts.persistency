@@ -2,7 +2,7 @@ package io.github.rbuhler.nutrifactspersistency.Repositories;
 
 import io.github.rbuhler.nutrifactspersistency.Entities.UnitOfMeasure;
 import io.github.rbuhler.nutrifactspersistency.NutrifactsPersistencyApplication;
-import io.github.rbuhler.nutrifactspersistency.localization.Languages;
+import io.github.rbuhler.nutrifactspersistency.Enum.Languages;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
