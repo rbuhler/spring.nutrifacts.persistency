@@ -1,6 +1,7 @@
 package io.github.rbuhler.nutrifactspersistency.Repositories;
 
 import io.github.rbuhler.nutrifactspersistency.Entities.UnitOfMeasure;
+import io.github.rbuhler.nutrifactspersistency.Enum.Greatness;
 import io.github.rbuhler.nutrifactspersistency.NutrifactsPersistencyApplication;
 import io.github.rbuhler.nutrifactspersistency.Enum.Languages;
 import org.junit.Before;
@@ -30,10 +31,10 @@ public class UnitOfMeasureRepositoryTest {
         List<UnitOfMeasure>     UOMListPayload;
         UOMListPayload = new ArrayList<>();
 
-        UOMListPayload.add(0, new UnitOfMeasure(Languages.PT_BR, "Kg", "Quilograma", "Peso"));
-        UOMListPayload.add(1, new UnitOfMeasure(Languages.EN_US, "Kg", "Kilogram", "Weight"));
-        UOMListPayload.add(2, new UnitOfMeasure(Languages.PT_BR, "Km", "Quilometro", "Distância"));
-        UOMListPayload.add(3, new UnitOfMeasure(Languages.EN_US, "Km", "Kilometer", "Distance"));
+        UOMListPayload.add(0, new UnitOfMeasure(Languages.PT_BR, "Kg", "Quilograma", Greatness.MASS));
+        UOMListPayload.add(1, new UnitOfMeasure(Languages.EN_US, "Kg", "Kilogram", Greatness.MASS));
+        UOMListPayload.add(2, new UnitOfMeasure(Languages.PT_BR, "Km", "Quilometro", Greatness.LENGHT));
+        UOMListPayload.add(3, new UnitOfMeasure(Languages.EN_US, "Km", "Kilometer", Greatness.LENGHT));
 
         for(int count = 0; count < UOMListPayload.size(); count++ ) {
             repository.save(UOMListPayload.get(count));
@@ -52,16 +53,16 @@ public class UnitOfMeasureRepositoryTest {
 
         UOMListExpected = new ArrayList<>();
 
-        UOM_pt_kg = new UnitOfMeasure(Languages.PT_BR, "Kg", "Quilograma", "Peso");
+        UOM_pt_kg = new UnitOfMeasure(Languages.PT_BR, "Kg", "Quilograma", Greatness.MASS);
         UOM_pt_kg.setIndex(1L);
 
-        UOM_en_kg =new UnitOfMeasure(Languages.EN_US, "Kg", "Kilogram", "Weight");
+        UOM_en_kg =new UnitOfMeasure(Languages.EN_US, "Kg", "Kilogram", Greatness.MASS);
         UOM_en_kg.setIndex(2L);
 
-        UOM_pt_km = new UnitOfMeasure(Languages.PT_BR, "Km", "Quilometro", "Distância");
+        UOM_pt_km = new UnitOfMeasure(Languages.PT_BR, "Km", "Quilometro", Greatness.LENGHT);
         UOM_pt_km.setIndex(3L);
 
-        UOM_en_km = new UnitOfMeasure(Languages.EN_US, "Km", "Kilometer", "Distance");
+        UOM_en_km = new UnitOfMeasure(Languages.EN_US, "Km", "Kilometer", Greatness.LENGHT);
         UOM_en_km.setIndex(4L);
 
         UOMListExpected.add(0, UOM_pt_kg);
@@ -74,6 +75,7 @@ public class UnitOfMeasureRepositoryTest {
             assertReflectionEquals("Record ["+ count +"] failed.", UOMListExpected.get(count), UOMActual);
         }
     }
+
     @Test
     public void findByIndex_givenUOMExists_shouldReturnUOM(){
         List<UnitOfMeasure>     UOMListExpected;
@@ -85,16 +87,16 @@ public class UnitOfMeasureRepositoryTest {
 
         UOMListExpected = new ArrayList<>();
 
-        UOM_pt_kg = new UnitOfMeasure(Languages.PT_BR, "Kg", "Quilograma", "Peso");
+        UOM_pt_kg = new UnitOfMeasure(Languages.PT_BR, "Kg", "Quilograma", Greatness.MASS);
         UOM_pt_kg.setIndex(1L);
 
-        UOM_en_kg =new UnitOfMeasure(Languages.EN_US, "Kg", "Kilogram", "Weight");
+        UOM_en_kg =new UnitOfMeasure(Languages.EN_US, "Kg", "Kilogram", Greatness.MASS);
         UOM_en_kg.setIndex(2L);
 
-        UOM_pt_km = new UnitOfMeasure(Languages.PT_BR, "Km", "Quilometro", "Distância");
+        UOM_pt_km = new UnitOfMeasure(Languages.PT_BR, "Km", "Quilometro", Greatness.LENGHT);
         UOM_pt_km.setIndex(3L);
 
-        UOM_en_km = new UnitOfMeasure(Languages.EN_US, "Km", "Kilometer", "Distance");
+        UOM_en_km = new UnitOfMeasure(Languages.EN_US, "Km", "Kilometer", Greatness.LENGHT);
         UOM_en_km.setIndex(4L);
 
         UOMListExpected.add(0, UOM_pt_kg);
@@ -109,13 +111,14 @@ public class UnitOfMeasureRepositoryTest {
             assertReflectionEquals("Record ["+ count +"] failed.", UOMListExpected.get(count), UOMActual);
         }
     }
+
     @Test
     public void getter_setter(){
         UnitOfMeasure actual,
                     expected;
 
         expected = new UnitOfMeasure();
-        actual = new UnitOfMeasure(Languages.PT_BR, "Kg", "Quilograma", "Peso");
+        actual = new UnitOfMeasure(Languages.PT_BR, "Kg", "Quilograma", Greatness.MASS);
 
         expected.setIndex(actual.getIndex());
         expected.setDescription(actual.getDescription());
@@ -123,6 +126,4 @@ public class UnitOfMeasureRepositoryTest {
         expected.setLang(actual.getLang());
         expected.setShortId(actual.getShortId());
     }
-
-
 }

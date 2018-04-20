@@ -1,5 +1,6 @@
 package io.github.rbuhler.nutrifactspersistency.Entities;
 
+import io.github.rbuhler.nutrifactspersistency.Enum.Greatness;
 import io.github.rbuhler.nutrifactspersistency.Enum.Languages;
 
 import javax.persistence.Entity;
@@ -16,12 +17,15 @@ public class UnitOfMeasure {
     private Languages lang;
     private String shortId;
     private String description;
-    private String greatness;
+    private Greatness greatness;
 
     public UnitOfMeasure() {
     }
 
-    public UnitOfMeasure(Languages lang, String shortId, String description, String greatness) {
+    public UnitOfMeasure(Languages lang,
+                         String shortId,
+                         String description,
+                         Greatness greatness) {
         this.lang = lang;
         this.shortId = shortId;
         this.description = description;
@@ -54,10 +58,10 @@ public class UnitOfMeasure {
         return description;
     }
 
-    public void setGreatness(String greatness) {
+    public void setGreatness(Greatness greatness) {
         this.greatness = greatness;
     }
-    public String getGreatness() {
+    public Greatness getGreatness() {
         return greatness;
     }
 

@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 public class NutriFacts {
     @Id
-    private Long nutriTable;
+    private Long item_index;
     @Id
     private Nutrient nutrient;
     private float quantity;

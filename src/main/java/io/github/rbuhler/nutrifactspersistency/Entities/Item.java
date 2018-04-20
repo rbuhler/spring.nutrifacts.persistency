@@ -16,14 +16,32 @@ public class Item {
     private String unitOfMeasure;
     private String image;
 
+    private float serv_size;
+    private UnitOfMeasure serv_uom;
+    private float serv_calories;
+    private String disclaimer;
+
     public Item(){}
 
-    public Item (String barcode, String identification, int quantity, String unitOfMeasure, String image ){
+    public Item (String barcode,
+                 String identification,
+                 int quantity,
+                 String unitOfMeasure,
+                 String image,
+                 float serv_size,
+                 UnitOfMeasure serv_uom,
+                 float serv_calories,
+                 String disclaimer
+    ){
         this.barcode = barcode;
         this.identification = identification;
         this.quantity = quantity;
         this.unitOfMeasure = unitOfMeasure;
         this.image = image;
+        this.serv_size = serv_size;
+        this.serv_uom = serv_uom;
+        this.serv_calories = serv_calories;
+        this.disclaimer = disclaimer;
     }
 
     public Long getIndex() {
@@ -68,4 +86,15 @@ public class Item {
         this.image = image;
     }
 
+    public float getServ_size() { return serv_size; }
+    public void setServ_size(float serv_size) { this.serv_size = serv_size; }
+
+    public UnitOfMeasure getServ_uom() { return serv_uom; }
+    public void setServ_uom(UnitOfMeasure serv_uom) { this.serv_uom = serv_uom; }
+
+    public float getServ_calories() { return serv_calories; }
+    public void setServ_calories(float serv_calories) { this.serv_calories = serv_calories; }
+
+    public String getDisclaimer() { return disclaimer; }
+    public void setDisclaimer(String disclaimer) { this.disclaimer = disclaimer; }
 }
