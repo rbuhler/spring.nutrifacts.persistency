@@ -23,17 +23,17 @@ public class ItemRepositoryTest {
     @Autowired
     private ItemRepository repository;
 
-    private UnitOfMeasure KiloGram(Languages lang){
+    private String getKiloGramShortId(Languages lang){
         UnitOfMeasure kiloGram;
         kiloGram = new UnitOfMeasure(lang,
                 "gr",
                 "Kilogram",
                 Greatness.MASS);
-        return kiloGram;
+        return kiloGram.getShortId();
     };
 
     @Test
-    public void findByBarcode_givenItemExists_sholdReturnItemA(){
+    public void findByBarcode_givenItemExists_shouldReturnItemA(){
         Item    itemPayload,
                 itemExpected,
                 itemListActual;
@@ -43,10 +43,10 @@ public class ItemRepositoryTest {
                 "1234567890123",
                 "Product A",
                 180,
-                KiloGram(Languages.PT_BR),
+                getKiloGramShortId(Languages.PT_BR),
                 "http://www.picture.com/itemActual",
                 18,
-                KiloGram(Languages.PT_BR),
+                getKiloGramShortId(Languages.PT_BR),
                 100,
                 "Nothing do say");
         repository.save(itemPayload);
@@ -68,10 +68,10 @@ public class ItemRepositoryTest {
                 "1234567890123",
                 "Product A",
                 180,
-                KiloGram(Languages.PT_BR),
+                getKiloGramShortId(Languages.PT_BR),
                 "http://www.picture.com/itemActual",
                 18,
-                KiloGram(Languages.PT_BR),
+                getKiloGramShortId(Languages.PT_BR),
                 100,
                 "Nothing to say.");
         repository.save(itemPayload);
@@ -92,10 +92,10 @@ public class ItemRepositoryTest {
                 "1234567890123",
                 "Product A",
                 180,
-                KiloGram(Languages.PT_BR),
+                getKiloGramShortId(Languages.PT_BR),
                 "http://www.picture.com/itemActual",
                 18,
-                KiloGram(Languages.PT_BR),
+                getKiloGramShortId(Languages.PT_BR),
                 100,
                 "Nothing to say.");
         repository.save(itemPayload);
@@ -114,10 +114,10 @@ public class ItemRepositoryTest {
                 "1234567890123",
                 "Product A",
                 180,
-                KiloGram(Languages.PT_BR),
+                getKiloGramShortId(Languages.PT_BR),
                 "http://www.picture.com/itemActual",
                 18,
-                KiloGram(Languages.PT_BR),
+                getKiloGramShortId(Languages.PT_BR),
                 100,
                 "Nothing to say.");
         expectedItem = new Item( );
@@ -128,9 +128,9 @@ public class ItemRepositoryTest {
         expectedItem.setIndex(actualItem.getIndex());
         expectedItem.setQuantity(actualItem.getQuantity());
         expectedItem.setUnitOfMeasure(actualItem.getUnitOfMeasure());
-        expectedItem.setServ_size(actualItem.getServ_size());
-        expectedItem.setServ_uom(actualItem.getServ_uom());
-        expectedItem.setServ_calories(actualItem.getServ_calories());
+        expectedItem.setServSize(actualItem.getServSize());
+        expectedItem.setServUom(actualItem.getServUom());
+        expectedItem.setServCalories(actualItem.getServCalories());
         expectedItem.setDisclaimer(actualItem.getDisclaimer());
     }
 }

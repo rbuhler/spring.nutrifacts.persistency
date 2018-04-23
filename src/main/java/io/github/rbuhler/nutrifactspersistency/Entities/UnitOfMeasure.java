@@ -7,9 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Entity
-public class UnitOfMeasure {
+public class UnitOfMeasure implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,13 +20,14 @@ public class UnitOfMeasure {
     private String description;
     private Greatness greatness;
 
-    public UnitOfMeasure() {
-    }
+    public UnitOfMeasure() { }
 
-    public UnitOfMeasure(Languages lang,
-                         String shortId,
-                         String description,
-                         Greatness greatness) {
+    public UnitOfMeasure(
+            Languages lang,
+            String shortId,
+            String description,
+            Greatness greatness
+    ){
         this.lang = lang;
         this.shortId = shortId;
         this.description = description;
@@ -64,5 +66,4 @@ public class UnitOfMeasure {
     public Greatness getGreatness() {
         return greatness;
     }
-
 }
