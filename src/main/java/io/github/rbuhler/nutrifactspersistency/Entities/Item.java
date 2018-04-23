@@ -13,7 +13,7 @@ public class Item {
     private String barcode;
     private String identification;
     private int quantity;
-    private String unitOfMeasure;
+    private UnitOfMeasure unitOfMeasure;
     private String image;
 
     private float serv_size;
@@ -26,7 +26,7 @@ public class Item {
     public Item (String barcode,
                  String identification,
                  int quantity,
-                 String unitOfMeasure,
+                 UnitOfMeasure unitOfMeasure,
                  String image,
                  float serv_size,
                  UnitOfMeasure serv_uom,
@@ -72,10 +72,10 @@ public class Item {
         this.quantity = quantity;
     }
 
-    public String getUnitOfMeasure() {
+    public UnitOfMeasure getUnitOfMeasure() {
         return unitOfMeasure;
     }
-    public void setUnitOfMeasure(String unitOfMeasure) {
+    public void setUnitOfMeasure(UnitOfMeasure unitOfMeasure) {
         this.unitOfMeasure = unitOfMeasure;
     }
 

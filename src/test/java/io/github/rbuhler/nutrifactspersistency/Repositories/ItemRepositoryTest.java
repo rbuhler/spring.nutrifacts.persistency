@@ -1,6 +1,9 @@
 package io.github.rbuhler.nutrifactspersistency.Repositories;
 
 import io.github.rbuhler.nutrifactspersistency.Entities.Item;
+import io.github.rbuhler.nutrifactspersistency.Entities.UnitOfMeasure;
+import io.github.rbuhler.nutrifactspersistency.Enum.Greatness;
+import io.github.rbuhler.nutrifactspersistency.Enum.Languages;
 import io.github.rbuhler.nutrifactspersistency.NutrifactsPersistencyApplication;
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,9 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
-import sun.font.TrueTypeFont;
-
-import javax.validation.constraints.AssertTrue;
 
 import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEquals;
 
@@ -23,6 +23,15 @@ public class ItemRepositoryTest {
     @Autowired
     private ItemRepository repository;
 
+    private UnitOfMeasure KiloGram(Languages lang){
+        UnitOfMeasure kiloGram;
+        kiloGram = new UnitOfMeasure(lang,
+                "gr",
+                "Kilogram",
+                Greatness.MASS);
+        return kiloGram;
+    };
+
     @Test
     public void findByBarcode_givenItemExists_sholdReturnItemA(){
         Item    itemPayload,
@@ -30,7 +39,16 @@ public class ItemRepositoryTest {
                 itemListActual;
         String  barcode = new String ("1234567890123");
 
-        itemPayload = new Item("1234567890123", "Product A", 180, "gr", "http://www.picture.com/itemActual");
+        itemPayload = new Item(
+                "1234567890123",
+                "Product A",
+                180,
+                KiloGram(Languages.PT_BR),
+                "http://www.picture.com/itemActual",
+                18,
+                KiloGram(Languages.PT_BR),
+                100,
+                "Nothing do say");
         repository.save(itemPayload);
 
         itemExpected = itemPayload;
@@ -38,6 +56,7 @@ public class ItemRepositoryTest {
 
         assertReflectionEquals(itemExpected, itemListActual);
     }
+
     @Test
     public void existsByBarcode_givenItemExists_sholdReturnTrue(){
         Item    itemPayload;
@@ -45,7 +64,16 @@ public class ItemRepositoryTest {
                 itemListActual;
         String  barcode = new String ("1234567890123");
 
-        itemPayload = new Item("1234567890123", "Product A", 180, "gr", "http://www.picture.com/itemActual");
+        itemPayload = new Item(
+                "1234567890123",
+                "Product A",
+                180,
+                KiloGram(Languages.PT_BR),
+                "http://www.picture.com/itemActual",
+                18,
+                KiloGram(Languages.PT_BR),
+                100,
+                "Nothing to say.");
         repository.save(itemPayload);
 
         itemExpected = true;
@@ -60,7 +88,16 @@ public class ItemRepositoryTest {
                 itemListActual;
         Long    index = new Long(1);
 
-        itemPayload = new Item("1234567890123", "Product A", 180, "gr", "http://www.picture.com/itemActual");
+        itemPayload = new Item(
+                "1234567890123",
+                "Product A",
+                180,
+                KiloGram(Languages.PT_BR),
+                "http://www.picture.com/itemActual",
+                18,
+                KiloGram(Languages.PT_BR),
+                100,
+                "Nothing to say.");
         repository.save(itemPayload);
 
         itemExpected = itemPayload;
@@ -73,7 +110,16 @@ public class ItemRepositoryTest {
         Item    actualItem,
                 expectedItem;
 
-        actualItem = new Item("1234567890123", "Product A", 180, "gr", "http://www.picture.com/itemActual");
+        actualItem = new Item(
+                "1234567890123",
+                "Product A",
+                180,
+                KiloGram(Languages.PT_BR),
+                "http://www.picture.com/itemActual",
+                18,
+                KiloGram(Languages.PT_BR),
+                100,
+                "Nothing to say.");
         expectedItem = new Item( );
 
         expectedItem.setBarcode(actualItem.getBarcode());
@@ -82,5 +128,9 @@ public class ItemRepositoryTest {
         expectedItem.setIndex(actualItem.getIndex());
         expectedItem.setQuantity(actualItem.getQuantity());
         expectedItem.setUnitOfMeasure(actualItem.getUnitOfMeasure());
+        expectedItem.setServ_size(actualItem.getServ_size());
+        expectedItem.setServ_uom(actualItem.getServ_uom());
+        expectedItem.setServ_calories(actualItem.getServ_calories());
+        expectedItem.setDisclaimer(actualItem.getDisclaimer());
     }
 }
