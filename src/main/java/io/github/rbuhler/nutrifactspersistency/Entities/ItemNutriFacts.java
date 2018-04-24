@@ -8,10 +8,8 @@ import java.util.Objects;
 @IdClass(ItemNutriFacts.ItemNutriFactsId.class)
 public class ItemNutriFacts{
     @Id
-    @OneToMany
     private Long item;
     @Id
-    @ManyToOne
     private Long index;
     private Long nutrient;
     private float quantity;
@@ -80,7 +78,7 @@ public class ItemNutriFacts{
         this.index = index;
     }
 
-    public Long getNutrient(long l) {
+    public Long getNutrient() {
         return nutrient;
     }
     public void setNutrient(Long nutrient) {

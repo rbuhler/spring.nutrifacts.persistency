@@ -38,7 +38,7 @@ public class ItemNutriFactsRepositoryTest {
 
         nutriFacts.setItem(1L);
         nutriFacts.setIndex(1L);
-        nutriFacts.getNutrient(10L);
+        nutriFacts.setNutrient(10L);
         nutriFacts.setQuantity(10);
         nutriFacts.setUnitOfMeasure("gr");
         nutriFacts.setDaily_value((float) 25.5);
@@ -49,7 +49,7 @@ public class ItemNutriFactsRepositoryTest {
         nutriFacts = new ItemNutriFacts();
         nutriFacts.setItem(1L);
         nutriFacts.setIndex(2L);
-        nutriFacts.getNutrient(20L);
+        nutriFacts.setNutrient(20L);
         nutriFacts.setQuantity(20);
         nutriFacts.setUnitOfMeasure("gr");
         nutriFacts.setDaily_value((float) 45.5);
@@ -60,18 +60,42 @@ public class ItemNutriFactsRepositoryTest {
         nutriFacts = new ItemNutriFacts();
         nutriFacts.setItem(2L);
         nutriFacts.setIndex(1L);
-        nutriFacts.getNutrient(15L);
+        nutriFacts.setNutrient(15L);
         nutriFacts.setQuantity(60);
         nutriFacts.setUnitOfMeasure("km");
         nutriFacts.setDaily_value((float) 33.87);
 
         repository.save(nutriFacts);
-        nutriFactsExpected.add(nutriFacts);
+
+        nutriFactsActual = repository.findByItem(item);
 
         for (int x = 0; x < nutriFactsExpected.size(); x++ ){
             assertReflectionEquals(nutriFactsExpected.get(x), nutriFactsActual.get(x));
         }
 
+    }
+    @Test
+    public void getter_setter(){
+        ItemNutriFacts
+                nutriFactsExpected,
+                nutriFactsActual;
+
+        nutriFactsExpected = new ItemNutriFacts();
+        nutriFactsActual = new ItemNutriFacts();
+
+        nutriFactsActual.setItem(1L);
+        nutriFactsActual.setIndex(1L);
+        nutriFactsActual.setNutrient(10L);
+        nutriFactsActual.setQuantity(10);
+        nutriFactsActual.setUnitOfMeasure("gr");
+        nutriFactsActual.setDaily_value((float) 25.5);
+
+        nutriFactsExpected.setItem(nutriFactsActual.getItem());
+        nutriFactsExpected.setIndex(nutriFactsActual.getIndex());
+        nutriFactsExpected.setNutrient(nutriFactsActual.getNutrient());
+        nutriFactsExpected.setQuantity(nutriFactsActual.getQuantity());
+        nutriFactsExpected.setUnitOfMeasure(nutriFactsActual.getUnitOfMeasure());
+        nutriFactsExpected.setDaily_value(nutriFactsActual.getDaily_value());
     }
 
 }
