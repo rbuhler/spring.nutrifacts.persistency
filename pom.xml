@@ -60,6 +60,12 @@
 			<artifactId>unitils-core</artifactId>
 			<version>3.4.3</version>
 		</dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
 

@@ -36,8 +36,8 @@ public class ItemNutriFactsRepositoryTest {
         nutriFactsExpected = new ArrayList<ItemNutriFacts>();
         nutriFactsActual = new ArrayList<ItemNutriFacts>();
 
-        nutriFacts.setItem(1L);
-        nutriFacts.setIndex(1L);
+        nutriFacts.setItemId(1L);
+        nutriFacts.setNutrientId(1L);
         nutriFacts.setNutrient(10L);
         nutriFacts.setQuantity(10);
         nutriFacts.setUnitOfMeasure("gr");
@@ -47,8 +47,8 @@ public class ItemNutriFactsRepositoryTest {
         nutriFactsExpected.add(nutriFacts);
 
         nutriFacts = new ItemNutriFacts();
-        nutriFacts.setItem(1L);
-        nutriFacts.setIndex(2L);
+        nutriFacts.setItemId(1L);
+        nutriFacts.setNutrientId(2L);
         nutriFacts.setNutrient(20L);
         nutriFacts.setQuantity(20);
         nutriFacts.setUnitOfMeasure("gr");
@@ -58,8 +58,8 @@ public class ItemNutriFactsRepositoryTest {
         nutriFactsExpected.add(nutriFacts);
 
         nutriFacts = new ItemNutriFacts();
-        nutriFacts.setItem(2L);
-        nutriFacts.setIndex(1L);
+        nutriFacts.setItemId(2L);
+        nutriFacts.setNutrientId(1L);
         nutriFacts.setNutrient(15L);
         nutriFacts.setQuantity(60);
         nutriFacts.setUnitOfMeasure("km");
@@ -83,15 +83,15 @@ public class ItemNutriFactsRepositoryTest {
         nutriFactsExpected = new ItemNutriFacts();
         nutriFactsActual = new ItemNutriFacts();
 
-        nutriFactsActual.setItem(1L);
-        nutriFactsActual.setIndex(1L);
+        nutriFactsActual.setItemId(1L);
+        nutriFactsActual.setNutrientId(1L);
         nutriFactsActual.setNutrient(10L);
         nutriFactsActual.setQuantity(10);
         nutriFactsActual.setUnitOfMeasure("gr");
         nutriFactsActual.setDaily_value((float) 25.5);
 
-        nutriFactsExpected.setItem(nutriFactsActual.getItem());
-        nutriFactsExpected.setIndex(nutriFactsActual.getIndex());
+        nutriFactsExpected.setItemId(nutriFactsActual.getItemId());
+        nutriFactsExpected.setNutrientId(nutriFactsActual.getNutrientId());
         nutriFactsExpected.setNutrient(nutriFactsActual.getNutrient());
         nutriFactsExpected.setQuantity(nutriFactsActual.getQuantity());
         nutriFactsExpected.setUnitOfMeasure(nutriFactsActual.getUnitOfMeasure());

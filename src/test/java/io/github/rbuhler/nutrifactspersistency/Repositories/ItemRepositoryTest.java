@@ -125,7 +125,7 @@ public class ItemRepositoryTest {
         expectedItem.setBarcode(actualItem.getBarcode());
         expectedItem.setIdentification(actualItem.getIdentification());
         expectedItem.setImage(actualItem.getImage());
-        expectedItem.setIndex(actualItem.getIndex());
+        expectedItem.setIndexId(actualItem.getIndexId());
         expectedItem.setQuantity(actualItem.getQuantity());
         expectedItem.setUnitOfMeasure(actualItem.getUnitOfMeasure());
         expectedItem.setServSize(actualItem.getServSize());

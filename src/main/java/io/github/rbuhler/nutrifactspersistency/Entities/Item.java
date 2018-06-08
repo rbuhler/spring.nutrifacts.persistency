@@ -1,24 +1,42 @@
 package io.github.rbuhler.nutrifactspersistency.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
+@Table
 public class Item {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long index;
-    private String barcode;
-    private String identification;
-    private int quantity;
-    private String unitOfMeasure;
-    private String image;
+    private Long indexId;
 
+    @Version
+    private long version;
+    @NotBlank
+    @Column(updatable = false)
+    private Timestamp createdAt;
+    @Column(insertable = false)
+    private Timestamp modifiedAt;
+
+    @Column
+    private String barcode;
+    @Column
+    private String identification;
+    @Column
+    private int quantity;
+    @Column
+    private String unitOfMeasure;
+    @Column
+    private String image;
+    @Column
     private float servSize;
+    @Column
     private String servUom;
+    @Column
     private float servCalories;
+    @Column
     private String disclaimer;
 
     public Item(){}
@@ -45,10 +63,12 @@ public class Item {
         this.disclaimer = disclaimer;
     }
 
-    public Long getIndex() {
-        return index;
+    public Long getIndexId() {
+        return indexId;
     }
-    public void setIndex(Long index) { this.index = index; }
+    public void setIndexId(Long indexId) { this.indexId = indexId; }
+
+    public Long getVersion() { return this.version; }
 
     public String getBarcode() {
         return barcode;
@@ -96,4 +116,19 @@ public class Item {
 
     public String getDisclaimer() { return disclaimer; }
     public void setDisclaimer(String disclaimer) { this.disclaimer = disclaimer; }
+
+    protected static Timestamp now( ){
+        return new Timestamp(new Date().getTime());
+    }
+    @PrePersist
+    protected void onPersist(){
+        this.createdAt = now();
+    }
+    public Timestamp getCreatedAt(){ return this.createdAt; }
+
+    @PreUpdate
+    protected void onUpdate(){
+        this.modifiedAt = now();
+    }
+    public Timestamp getModifiedAt() { return  this.modifiedAt; }
 }
