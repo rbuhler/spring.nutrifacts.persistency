@@ -1,27 +1,18 @@
 package io.github.rbuhler.nutrifactspersistency.Entities;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@IdClass(ItemNutriFacts.ItemNutriFactsId.class)
-public class ItemNutriFacts{
+@IdClass(NutriFacts.ItemNutriFactsId.class)
+public class NutriFacts extends BaseEntity{
     @Id
+    @Column
     private Long itemId;
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long nutrientId;
-
-    @Version
-    private long version;
-    @NotBlank
-    @Column(updatable = false)
-    private Timestamp createdAt;
-    @Column(insertable = false)
-    private Timestamp modifiedAt;
+    @Column
+    private Long nutrifactId;
 
     @Column
     private Long nutrient;
@@ -39,22 +30,22 @@ public class ItemNutriFacts{
         private Long nutrientId;
 
         public ItemNutriFactsId(){}
-        public ItemNutriFactsId(Long itemId, Long nutrientId){
+        public ItemNutriFactsId(Long itemId, Long nutrifactId){
             this.itemId = itemId;
-            this.nutrientId = nutrientId;
+            this.nutrientId = nutrifactId;
         }
         @Override
         public boolean equals(Object o){
             if(o == this){
                 return true;
             }
-            if(!(o instanceof ItemNutriFacts)){
+            if(!(o instanceof NutriFacts)){
                 return false;
             }
-            ItemNutriFacts itemNutriFacts = (ItemNutriFacts)o;
+            NutriFacts nutriFacts = (NutriFacts)o;
             return
-                    Objects.equals(itemId, itemNutriFacts.getItemId()) &&
-                    Objects.equals(nutrientId,itemNutriFacts.getNutrientId());
+                    Objects.equals(itemId, nutriFacts.getItemId()) &&
+                    Objects.equals(nutrientId, nutriFacts.getNutrifactId());
         }
         @Override
         public int hashCode(){
@@ -62,18 +53,18 @@ public class ItemNutriFacts{
         }
     }
 
-    public ItemNutriFacts(){}
+    public NutriFacts(){}
 
-    public ItemNutriFacts(
+    public NutriFacts(
             Long indexId,
-            Long nutrientId,
+            Long nutrifactId,
             Long nutrient,
             float quantity,
             String unitOfMeasure,
             float daily_value
     ){
         this.itemId = indexId;
-        this.nutrientId = nutrientId;
+        this.nutrifactId = nutrifactId;
         this.nutrient = nutrient;
         this.quantity = quantity;
         this.unitOfMeasure = unitOfMeasure;
@@ -87,13 +78,11 @@ public class ItemNutriFacts{
         this.itemId = itemId;
     }
 
-    public Long getVersion(){ return this.version; }
-
-    public Long getNutrientId() {
-        return nutrientId;
+    public Long getNutrifactId() {
+        return nutrifactId;
     }
-    public void setNutrientId(Long nutrientId) {
-        this.nutrientId = nutrientId;
+    public void setNutrifactId(Long nutrifactId) {
+        this.nutrifactId = nutrifactId;
     }
 
     public Long getNutrient() {
@@ -123,15 +112,4 @@ public class ItemNutriFacts{
     public void setDaily_value(float daily_value) {
         this.daily_value = daily_value;
     }
-
-    protected static Timestamp now( ){
-        return new Timestamp(new Date().getTime());
-    }
-    @PrePersist
-    protected void onPersist(){ this.createdAt = now(); }
-    public Timestamp getCreatedAt(){ return this.createdAt; }
-
-    @PreUpdate
-    protected void onUpdate(){ this.modifiedAt = now(); }
-    public Timestamp getModifiedAt() { return  this.modifiedAt; }
 }

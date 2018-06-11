@@ -1,7 +1,7 @@
 package io.github.rbuhler.nutrifactspersistency.Repositories;
 
 
-import io.github.rbuhler.nutrifactspersistency.Entities.ItemNutriFacts;
+import io.github.rbuhler.nutrifactspersistency.Entities.NutriFacts;
 import io.github.rbuhler.nutrifactspersistency.NutrifactsPersistencyApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,26 +18,26 @@ import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEqua
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {NutrifactsPersistencyApplication.class})
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-public class ItemNutriFactsRepositoryTest {
+public class NutriFactsRepositoryTest {
 
     @Autowired
-    private ItemNutriFactsRepository repository;
+    private NutriFactsRepository repository;
 
     @Test
     public void findByItem_givenAnItem_shouldReturnAListOfNutrifacts(){
-        List<ItemNutriFacts>
+        List<NutriFacts>
                 nutriFactsExpected,
                 nutriFactsActual;
-        ItemNutriFacts nutriFacts;
+        NutriFacts nutriFacts;
 
         Long item = 1L;
 
-        nutriFacts = new ItemNutriFacts();
-        nutriFactsExpected = new ArrayList<ItemNutriFacts>();
-        nutriFactsActual = new ArrayList<ItemNutriFacts>();
+        nutriFacts = new NutriFacts();
+        nutriFactsExpected = new ArrayList<NutriFacts>();
+        nutriFactsActual = new ArrayList<NutriFacts>();
 
         nutriFacts.setItemId(1L);
-        nutriFacts.setNutrientId(1L);
+        nutriFacts.setNutrifactId(1L);
         nutriFacts.setNutrient(10L);
         nutriFacts.setQuantity(10);
         nutriFacts.setUnitOfMeasure("gr");
@@ -46,9 +46,9 @@ public class ItemNutriFactsRepositoryTest {
         repository.save(nutriFacts);
         nutriFactsExpected.add(nutriFacts);
 
-        nutriFacts = new ItemNutriFacts();
+        nutriFacts = new NutriFacts();
         nutriFacts.setItemId(1L);
-        nutriFacts.setNutrientId(2L);
+        nutriFacts.setNutrifactId(2L);
         nutriFacts.setNutrient(20L);
         nutriFacts.setQuantity(20);
         nutriFacts.setUnitOfMeasure("gr");
@@ -57,9 +57,9 @@ public class ItemNutriFactsRepositoryTest {
         repository.save(nutriFacts);
         nutriFactsExpected.add(nutriFacts);
 
-        nutriFacts = new ItemNutriFacts();
+        nutriFacts = new NutriFacts();
         nutriFacts.setItemId(2L);
-        nutriFacts.setNutrientId(1L);
+        nutriFacts.setNutrifactId(1L);
         nutriFacts.setNutrient(15L);
         nutriFacts.setQuantity(60);
         nutriFacts.setUnitOfMeasure("km");
@@ -76,22 +76,22 @@ public class ItemNutriFactsRepositoryTest {
     }
     @Test
     public void getter_setter(){
-        ItemNutriFacts
+        NutriFacts
                 nutriFactsExpected,
                 nutriFactsActual;
 
-        nutriFactsExpected = new ItemNutriFacts();
-        nutriFactsActual = new ItemNutriFacts();
+        nutriFactsExpected = new NutriFacts();
+        nutriFactsActual = new NutriFacts();
 
         nutriFactsActual.setItemId(1L);
-        nutriFactsActual.setNutrientId(1L);
+        nutriFactsActual.setNutrifactId(1L);
         nutriFactsActual.setNutrient(10L);
         nutriFactsActual.setQuantity(10);
         nutriFactsActual.setUnitOfMeasure("gr");
         nutriFactsActual.setDaily_value((float) 25.5);
 
         nutriFactsExpected.setItemId(nutriFactsActual.getItemId());
-        nutriFactsExpected.setNutrientId(nutriFactsActual.getNutrientId());
+        nutriFactsExpected.setNutrifactId(nutriFactsActual.getNutrifactId());
         nutriFactsExpected.setNutrient(nutriFactsActual.getNutrient());
         nutriFactsExpected.setQuantity(nutriFactsActual.getQuantity());
         nutriFactsExpected.setUnitOfMeasure(nutriFactsActual.getUnitOfMeasure());

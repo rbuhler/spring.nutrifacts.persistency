@@ -2,26 +2,26 @@ package io.github.rbuhler.nutrifactspersistency.Entities;
 
 import io.github.rbuhler.nutrifactspersistency.Enum.Greatness;
 import io.github.rbuhler.nutrifactspersistency.Enum.Languages;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.io.Serializable;
+import javax.persistence.*;
 
 @Entity
-public class UnitOfMeasure implements Serializable {
+public class UnitOfMeasure extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Long index;
+
+    @Column
     private Languages lang;
+    @Column
     private String shortId;
+    @Column
     private String description;
+    @Column
     private Greatness greatness;
 
     public UnitOfMeasure() { }
-
     public UnitOfMeasure(
             Languages lang,
             String shortId,
