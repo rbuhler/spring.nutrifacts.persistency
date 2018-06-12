@@ -1,11 +1,9 @@
 package io.github.rbuhler.nutrifactspersistency.Entities;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Objects;
 
 @Entity
-@IdClass(NutriFacts.ItemNutriFactsId.class)
+//@IdClass(NutriFacts.ItemNutriFactsId.class)
 public class NutriFacts extends BaseEntity{
     @Id
     @Column
@@ -23,35 +21,35 @@ public class NutriFacts extends BaseEntity{
     @Column
     private float daily_value;
 
-    /** TODO
-     * https://stackoverflow.com/questions/12930935/illegalargumentexception-expecting-idclass-mapping */
-    public static class ItemNutriFactsId implements Serializable{
-        private Long itemId;
-        private Long nutrientId;
-
-        public ItemNutriFactsId(){}
-        public ItemNutriFactsId(Long itemId, Long nutrifactId){
-            this.itemId = itemId;
-            this.nutrientId = nutrifactId;
-        }
-        @Override
-        public boolean equals(Object o){
-            if(o == this){
-                return true;
-            }
-            if(!(o instanceof NutriFacts)){
-                return false;
-            }
-            NutriFacts nutriFacts = (NutriFacts)o;
-            return
-                    Objects.equals(itemId, nutriFacts.getItemId()) &&
-                    Objects.equals(nutrientId, nutriFacts.getNutrifactId());
-        }
-        @Override
-        public int hashCode(){
-            return Objects.hash(itemId, nutrientId);
-        }
-    }
+//    /** TODO
+//     * https://stackoverflow.com/questions/12930935/illegalargumentexception-expecting-idclass-mapping */
+//    public static class ItemNutriFactsId implements Serializable{
+//        private Long itemId;
+//        private Long nutrientId;
+//
+//        public ItemNutriFactsId(){}
+//        public ItemNutriFactsId(Long itemId, Long nutrifactId){
+//            this.itemId = itemId;
+//            this.nutrientId = nutrifactId;
+//        }
+//        @Override
+//        public boolean equals(Object o){
+//            if(o == this){
+//                return true;
+//            }
+//            if(!(o instanceof NutriFacts)){
+//                return false;
+//            }
+//            NutriFacts nutriFacts = (NutriFacts)o;
+//            return
+//                    Objects.equals(itemId, nutriFacts.getItemId()) &&
+//                    Objects.equals(nutrientId, nutriFacts.getNutrifactId());
+//        }
+//        @Override
+//        public int hashCode(){
+//            return Objects.hash(itemId, nutrientId);
+//        }
+//    }
 
     public NutriFacts(){}
 

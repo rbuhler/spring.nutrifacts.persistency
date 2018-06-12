@@ -67,7 +67,7 @@ public class NutriFactsRepositoryTest {
 
         repository.save(nutriFacts);
 
-        nutriFactsActual = repository.findByItem(item);
+        nutriFactsActual = repository.findByItemId(item);
 
         for (int x = 0; x < nutriFactsExpected.size(); x++ ){
             assertReflectionEquals(nutriFactsExpected.get(x), nutriFactsActual.get(x));

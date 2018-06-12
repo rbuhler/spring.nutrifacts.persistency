@@ -13,6 +13,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEquals;
 
 @RunWith(SpringRunner.class)
@@ -101,7 +104,7 @@ public class ItemRepositoryTest {
         repository.save(itemPayload);
 
         itemExpected = itemPayload;
-        itemListActual = repository.findByIndex(index);
+        itemListActual = repository.findByItemId(index);
 
         assertReflectionEquals(itemExpected, itemListActual);
     }
@@ -120,17 +123,21 @@ public class ItemRepositoryTest {
                 getKiloGramShortId(Languages.PT_BR),
                 100,
                 "Nothing to say.");
-        expectedItem = new Item( );
+        expectedItem = new Item();
 
         expectedItem.setBarcode(actualItem.getBarcode());
         expectedItem.setIdentification(actualItem.getIdentification());
         expectedItem.setImage(actualItem.getImage());
-        expectedItem.setIndexId(actualItem.getIndexId());
+        expectedItem.setItemId(actualItem.getItemId());
         expectedItem.setQuantity(actualItem.getQuantity());
         expectedItem.setUnitOfMeasure(actualItem.getUnitOfMeasure());
         expectedItem.setServSize(actualItem.getServSize());
         expectedItem.setServUom(actualItem.getServUom());
         expectedItem.setServCalories(actualItem.getServCalories());
         expectedItem.setDisclaimer(actualItem.getDisclaimer());
+    }
+
+    protected static Timestamp now( ){
+        return new Timestamp(new Date().getTime());
     }
 }
