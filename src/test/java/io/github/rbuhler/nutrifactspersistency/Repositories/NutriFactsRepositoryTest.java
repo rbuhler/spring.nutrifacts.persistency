@@ -34,7 +34,6 @@ public class NutriFactsRepositoryTest {
 
         nutriFacts = new NutriFacts();
         nutriFactsExpected = new ArrayList<NutriFacts>();
-        nutriFactsActual = new ArrayList<NutriFacts>();
 
         nutriFacts.setItemId(1L);
         nutriFacts.setNutrifactId(1L);
@@ -47,7 +46,7 @@ public class NutriFactsRepositoryTest {
         nutriFactsExpected.add(nutriFacts);
 
         nutriFacts = new NutriFacts();
-        nutriFacts.setItemId(1L);
+        nutriFacts.setItemId(2L);
         nutriFacts.setNutrifactId(2L);
         nutriFacts.setNutrient(20L);
         nutriFacts.setQuantity(20);
@@ -58,7 +57,7 @@ public class NutriFactsRepositoryTest {
         nutriFactsExpected.add(nutriFacts);
 
         nutriFacts = new NutriFacts();
-        nutriFacts.setItemId(2L);
+        nutriFacts.setItemId(3L);
         nutriFacts.setNutrifactId(1L);
         nutriFacts.setNutrient(15L);
         nutriFacts.setQuantity(60);
@@ -67,10 +66,11 @@ public class NutriFactsRepositoryTest {
 
         repository.save(nutriFacts);
 
-        nutriFactsActual = repository.findByItemId(item);
+        for (Integer x = 0; x < nutriFactsExpected.size(); x++ ){
+            item = x.longValue()+1L;
+            nutriFactsActual = repository.findByItemId(item);
 
-        for (int x = 0; x < nutriFactsExpected.size(); x++ ){
-            assertReflectionEquals(nutriFactsExpected.get(x), nutriFactsActual.get(x));
+            assertReflectionEquals(nutriFactsExpected.get(x), nutriFactsActual.get(0));
         }
 
     }
