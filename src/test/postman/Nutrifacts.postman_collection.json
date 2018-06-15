@@ -1,0 +1,94 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Nutrifacts",
+		"_postman_id": "7aebbf87-09da-6fe3-7cd0-73e3991780e5",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add UOM",
+			"request": {
+				"url": "http://localhost:8080/uom",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"shortId\" : \"M\", \n  \"description\" : \"Meter\", \n  \"greatness\" : \"Distance\" \n}"
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Add Item",
+			"request": {
+				"url": "http://localhost:8080/uom",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"barcode\" : \"0123456789012\", \n  \"identification\" : \"Item A\", \n  \"quantity\" : \"10\",\n  \"unitOfMeasure\" : \"PC\",\n  \"image\" : \"http://www.igm.com/01\",\n  \"servSize\" : \"1\",\n  \"servUom\" : \"PC\",\n  \"servCalories\" : \"150\",\n  \"disclaimer\" : \"Item A disclaimer.\"\n}"
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get all UOM",
+			"request": {
+				"url": "http://localhost:8080/uom/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get UOM id 1",
+			"request": {
+				"url": "http://localhost:8080/uom/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get Item id 1",
+			"request": {
+				"url": "http://localhost:8080/item/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Items",
+			"request": {
+				"url": "http://localhost:8080/item/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": null
+			},
+			"response": []
+		}
+	]
+}
