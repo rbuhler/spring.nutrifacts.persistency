@@ -10,7 +10,7 @@ import java.util.List;
 @RepositoryRestResource(collectionResourceRel = "nutrifacts", path = "nutrifacts")
 public interface NutriFactsRepository extends PagingAndSortingRepository<NutriFacts, Long> {
 
-    List<NutriFacts> findByItem(@Param("item") Long item);
+    List<NutriFacts> findByItemId(@Param("itemId") Long itemId);
 
-    NutriFacts findByItemAndIndex(@Param("item") Long item, @Param("index") Long index);
+    NutriFacts findByItemIdAndNutrifactId(@Param("itemId") Long itemId, @Param("NutrifactId") Long NutrifactId);
 }

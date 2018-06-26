@@ -1,6 +1,7 @@
 package io.github.rbuhler.nutrifactspersistency.Entities;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
 @Table
@@ -8,7 +9,7 @@ public class Item extends BaseEntity{
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column
-    private Long indexId;
+    private Long itemId;
 
     @Column
     private String barcode;
@@ -46,8 +47,8 @@ public class Item extends BaseEntity{
         this.disclaimer = disclaimer;
     }
 
-    public Long getIndexId() { return indexId; }
-    public void setIndexId(Long indexId) { this.indexId = indexId; }
+    public Long getItemId() { return itemId; }
+    public void setItemId(Long itemId) { this.itemId = itemId; }
 
     public String getBarcode() { return barcode; }
     public void setBarcode(String barcode) { this.barcode = barcode; }

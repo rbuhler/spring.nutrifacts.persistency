@@ -13,7 +13,7 @@ public class BaseEntity {
     @Version
     @Column
     private long version;
-    @NotBlank
+    //@NotBlank
     @Column(updatable = false)
     private Timestamp createdAt;
     @Column(insertable = false)
