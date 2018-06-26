@@ -28,8 +28,8 @@ public class PartnerTest {
         List<Partner> partnerListPayload;
         partnerListPayload = new ArrayList<>();
 
-        partnerListPayload.add( 0, new Partner("Partner A Co", "Super Partner Co"));
-        partnerListPayload.add( 1, new Partner("Partner B Co", "Super Partner Co"));
+        partnerListPayload.add( 0, new Partner("Partner A Co", "Super Partner Co", "A"));
+        partnerListPayload.add( 1, new Partner("Partner B Co", "Super Partner Co", "B"));
 
         for (int count = 0; count < partnerListPayload.size(); count++){
             repository.save(partnerListPayload.get(count));
@@ -41,9 +41,9 @@ public class PartnerTest {
                 expectedPartnerB,
                 actualPartner;
 
-        expectedPartnerA = new Partner("Partner A Co", "Super Partner Co");
+        expectedPartnerA = new Partner("Partner A Co", "Super Partner Co", "A");
         expectedPartnerA.setIndex(1L);
-        expectedPartnerB = new Partner("Partner B Co", "Super Partner Co");
+        expectedPartnerB = new Partner("Partner B Co", "Super Partner Co", "B");
         expectedPartnerB.setIndex(2L);
 
         actualPartner = repository.findByIndex(1L);
