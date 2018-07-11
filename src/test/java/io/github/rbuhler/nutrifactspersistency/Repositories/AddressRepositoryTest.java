@@ -14,14 +14,13 @@ import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEqua
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {NutrifactsPersistencyApplication.class})
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-
 public class AddressRepositoryTest {
+
     @Autowired
     private AddressRepository repository;
 
     @Test
-    public void findByIndex_givenAddressExists_shouldReturnAddress(){
-
+    public void findByIndex_givenIndexExists_shouldReturnAddressA(){
         Address addressPayload,
                 addressExpected,
                 addressActual;
