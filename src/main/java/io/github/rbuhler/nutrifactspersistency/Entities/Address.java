@@ -27,7 +27,7 @@ public class Address extends BaseEntity{
     @Column
     private String country;
 
-    protected Address(){}
+    public Address(){}
 
     public Address( String address1, String address2, String address3, String complement,
                     Integer postalCode, String city, String region, String country){

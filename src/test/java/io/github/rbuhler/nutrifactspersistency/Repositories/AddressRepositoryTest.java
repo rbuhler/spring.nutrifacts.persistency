@@ -21,6 +21,7 @@ public class AddressRepositoryTest {
 
     @Test
     public void findByIndex_givenIndexExists_shouldReturnAddressA(){
+
         Address addressPayload,
                 addressExpected,
                 addressActual;
@@ -28,27 +29,37 @@ public class AddressRepositoryTest {
         Long index = new Long(1);
 
         addressPayload = getPayload();
-
         repository.save(addressPayload);
 
         addressExpected = addressPayload;
         addressActual = repository.findByIndex(index);
 
         assertReflectionEquals(addressExpected, addressActual);
-
     }
 
     private Address getPayload(){
-        String address1 = "Street line 1";
-        String address2 = "Street line 2";
-        String address3 = "Street line 3";
-        String complement = "Complement for the address";
-        Integer postalCode = 956000000;
-        String city = "City";
-        String region = "Country Region";
-        String country = "Country";
+        Address payload;
+        payload = new Address();
 
-        Address address = new Address( address1, address2, address3,complement,postalCode,city,region,country);
+        payload.setAddress1("Street line 1");
+        payload.setAddress2("Street line 2");
+        payload.setAddress3("Street line 3");
+        payload.setComplement("Complement for the address");
+        payload.setPostalCode(956000000);
+        payload.setCity("City");
+        payload.setRegion("Country Region");
+        payload.setCountry("Country");
+
+        Address address = new Address(
+                payload.getAddress1(),
+                payload.getAddress2(),
+                payload.getAddress3(),
+                payload.getComplement(),
+                payload.getPostalCode(),
+                payload.getCity(),
+                payload.getRegion(),
+                payload.getCountry()
+                );
 
         return address;
     }
