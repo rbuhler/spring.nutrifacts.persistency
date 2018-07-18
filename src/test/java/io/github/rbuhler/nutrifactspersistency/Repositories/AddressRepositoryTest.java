@@ -41,26 +41,27 @@ public class AddressRepositoryTest {
         Address payload;
         payload = new Address();
 
-        payload.setAddress1("Street line 1");
-        payload.setAddress2("Street line 2");
-        payload.setAddress3("Street line 3");
-        payload.setComplement("Complement for the address");
-        payload.setPostalCode(956000000);
-        payload.setCity("City");
-        payload.setRegion("Country Region");
-        payload.setCountry("Country");
-
         Address address = new Address(
-                payload.getAddress1(),
-                payload.getAddress2(),
-                payload.getAddress3(),
-                payload.getComplement(),
-                payload.getPostalCode(),
-                payload.getCity(),
-                payload.getRegion(),
-                payload.getCountry()
-                );
+            "Street line 1",
+            "Street line 2",
+            "Street line 3",
+            "Complement for the address",
+            956000000,
+            "City",
+            "Country Region",
+            "Country"
+        );
 
-        return address;
+        payload.setIndex(address.getIndex());
+        payload.setAddress1(address.getAddress1());
+        payload.setAddress2(address.getAddress2());
+        payload.setAddress3(address.getAddress3());
+        payload.setComplement(address.getComplement());
+        payload.setPostalCode(address.getPostalCode());
+        payload.setCity(address.getCity());
+        payload.setRegion(address.getRegion());
+        payload.setCountry(address.getCountry());
+
+        return payload;
     }
 }

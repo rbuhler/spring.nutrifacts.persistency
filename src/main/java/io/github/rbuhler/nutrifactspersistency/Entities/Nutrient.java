@@ -1,10 +1,9 @@
 package io.github.rbuhler.nutrifactspersistency.Entities;
 
 import io.github.rbuhler.nutrifactspersistency.Enum.Languages;
-import io.github.rbuhler.nutrifactspersistency.Enum.NutryCategory;
+import io.github.rbuhler.nutrifactspersistency.Enum.NutriCategory;
 
 import javax.persistence.*;
-import java.security.PublicKey;
 
 @Entity
 public class Nutrient extends BaseEntity{
@@ -18,11 +17,11 @@ public class Nutrient extends BaseEntity{
     @Column
     private String nutrient;
     @Column
-    private NutryCategory category;
+    private NutriCategory category;
 
-    protected Nutrient(){}
+    public Nutrient(){}
 
-    public Nutrient(Languages lang, String nutrient, NutryCategory category){
+    public Nutrient(Languages lang, String nutrient, NutriCategory category){
         this.lang = lang;
         this.nutrient = nutrient;
         this.category = category;
@@ -37,6 +36,6 @@ public class Nutrient extends BaseEntity{
     public String getNutrient() { return nutrient; }
     public void setNutrient(String nutrient) { this.nutrient = nutrient; }
 
-    public NutryCategory getCategory() { return category; }
-    public void setCategory(NutryCategory category) { this.category = category; }
+    public NutriCategory getCategory() { return category; }
+    public void setCategory(NutriCategory category) { this.category = category; }
 }

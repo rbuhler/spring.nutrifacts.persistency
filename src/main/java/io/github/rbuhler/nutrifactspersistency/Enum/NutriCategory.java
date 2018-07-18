@@ -1,6 +1,6 @@
 package io.github.rbuhler.nutrifactspersistency.Enum;
 
-public enum NutryCategory {
+public enum NutriCategory {
     CARBOHYDRATE,
     PROTEIN,
     FAT,
