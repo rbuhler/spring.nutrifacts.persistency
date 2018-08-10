@@ -1,7 +1,6 @@
 package io.github.rbuhler.nutrifactspersistency.Entities;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 
 @Entity
 @Table

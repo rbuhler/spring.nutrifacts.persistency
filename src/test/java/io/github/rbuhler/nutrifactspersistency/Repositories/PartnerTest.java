@@ -53,4 +53,21 @@ public class PartnerTest {
         assertReflectionEquals("Manufacturer B  comparison failed", expectedPartnerB, actualPartner);
 
     }
+    @Test
+    public void getter_setter(){
+        Partner actualPartner,
+                expectedPartner;
+
+        actualPartner = new Partner(
+                "Name",
+                "MidName",
+                "Surename");
+
+        expectedPartner = new Partner();
+        expectedPartner.setName1(actualPartner.getName1());
+        expectedPartner.setName2(actualPartner.getName2());
+        expectedPartner.setName3(actualPartner.getName3());
+
+    }
+
 }

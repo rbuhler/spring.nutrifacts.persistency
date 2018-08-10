@@ -16,7 +16,7 @@ public class Partner extends BaseEntity{
         @Column
         private String name3;
 
-        protected Partner(){}
+        public Partner(){}
 
         public Partner(String name1, String name2, String name3){
                 this.name1 = name1;

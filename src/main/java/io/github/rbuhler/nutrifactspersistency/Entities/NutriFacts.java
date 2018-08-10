@@ -54,14 +54,14 @@ public class NutriFacts extends BaseEntity{
     public NutriFacts(){}
 
     public NutriFacts(
-            Long indexId,
+            Long itemId,
             Long nutrifactId,
             Long nutrient,
             float quantity,
             String unitOfMeasure,
             float daily_value
     ){
-        this.itemId = indexId;
+        this.itemId = itemId;
         this.nutrifactId = nutrifactId;
         this.nutrient = nutrient;
         this.quantity = quantity;

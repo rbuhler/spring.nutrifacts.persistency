@@ -22,40 +22,25 @@ public class NutrientRepositoryTest {
     private NutrientRepository repository;
 
     @Test
-    public void findByIndex_givenItemExists_sholdReturnItem(){
-
-        Long index = 1L;
-        Nutrient
-                nutrientPayload,
-                nutrientExpected,
-                nutrientActual;
-
-        nutrientPayload = payload();
-        nutrientExpected = nutrientPayload;
-
+    public void findByIndex_givenItemExists_shouldReturnItem(){
+        Nutrient nutrientPayload = getPayload();
         repository.save(nutrientPayload);
-        nutrientActual = repository.findByIndex(index);
-
-        assertReflectionEquals(nutrientExpected, nutrientActual);
+        assertReflectionEquals(nutrientPayload, repository.findByIndex(1L));
     }
 
-    private Nutrient payload(){
-        Nutrient nutrient,
-                payload;
-
-        nutrient = new Nutrient(
+    private Nutrient getPayload(){
+        Nutrient nutrient = new Nutrient(
                 Languages.EN_US,
                 "Calcio",
                 NutriCategory.CARBOHYDRATE
         );
 
-        payload = new Nutrient();
+        Nutrient nutrientPayload = new Nutrient();
+        nutrientPayload.setIndex(nutrient.getIndex());
+        nutrientPayload.setLang(nutrient.getLang());
+        nutrientPayload.setNutrient(nutrient.getNutrient());
+        nutrientPayload.setCategory(nutrient.getCategory());
 
-        payload.setIndex(nutrient.getIndex());
-        payload.setLang(nutrient.getLang());
-        payload.setNutrient(nutrient.getNutrient());
-        payload.setCategory(nutrient.getCategory());
-
-        return payload;
+        return nutrientPayload;
     }
 }

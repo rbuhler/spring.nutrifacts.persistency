@@ -21,26 +21,12 @@ public class AddressRepositoryTest {
 
     @Test
     public void findByIndex_givenIndexExists_shouldReturnAddressA(){
-
-        Address addressPayload,
-                addressExpected,
-                addressActual;
-
-        Long index = new Long(1);
-
-        addressPayload = getPayload();
+        Address addressPayload = getPayload();
         repository.save(addressPayload);
-
-        addressExpected = addressPayload;
-        addressActual = repository.findByIndex(index);
-
-        assertReflectionEquals(addressExpected, addressActual);
+        assertReflectionEquals(addressPayload, repository.findByIndex(1L));
     }
 
     private Address getPayload(){
-        Address payload;
-        payload = new Address();
-
         Address address = new Address(
             "Street line 1",
             "Street line 2",
@@ -52,16 +38,17 @@ public class AddressRepositoryTest {
             "Country"
         );
 
-        payload.setIndex(address.getIndex());
-        payload.setAddress1(address.getAddress1());
-        payload.setAddress2(address.getAddress2());
-        payload.setAddress3(address.getAddress3());
-        payload.setComplement(address.getComplement());
-        payload.setPostalCode(address.getPostalCode());
-        payload.setCity(address.getCity());
-        payload.setRegion(address.getRegion());
-        payload.setCountry(address.getCountry());
+        Address addressPayload = new Address();
+        addressPayload.setIndex(address.getIndex());
+        addressPayload.setAddress1(address.getAddress1());
+        addressPayload.setAddress2(address.getAddress2());
+        addressPayload.setAddress3(address.getAddress3());
+        addressPayload.setComplement(address.getComplement());
+        addressPayload.setPostalCode(address.getPostalCode());
+        addressPayload.setCity(address.getCity());
+        addressPayload.setRegion(address.getRegion());
+        addressPayload.setCountry(address.getCountry());
 
-        return payload;
+        return addressPayload;
     }
 }

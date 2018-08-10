@@ -2,6 +2,7 @@ package io.github.rbuhler.nutrifactspersistency.Entities;
 
 import io.github.rbuhler.nutrifactspersistency.Enum.Greatness;
 import io.github.rbuhler.nutrifactspersistency.Enum.Languages;
+
 import javax.persistence.*;
 
 @Entity

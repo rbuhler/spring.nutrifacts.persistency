@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Version;
-import javax.validation.constraints.NotBlank;
 import java.sql.Timestamp;
 import java.util.Date;
 

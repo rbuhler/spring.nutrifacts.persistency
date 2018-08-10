@@ -1,9 +1,6 @@
 package io.github.rbuhler.nutrifactspersistency.Repositories;
 
 import io.github.rbuhler.nutrifactspersistency.Entities.Item;
-import io.github.rbuhler.nutrifactspersistency.Entities.UnitOfMeasure;
-import io.github.rbuhler.nutrifactspersistency.Enum.Greatness;
-import io.github.rbuhler.nutrifactspersistency.Enum.Languages;
 import io.github.rbuhler.nutrifactspersistency.NutrifactsPersistencyApplication;
 import org.junit.Assert;
 import org.junit.Test;
@@ -26,115 +23,52 @@ public class ItemRepositoryTest {
     @Autowired
     private ItemRepository repository;
 
-    private String getKiloGramShortId(Languages lang){
-        UnitOfMeasure kiloGram;
-        kiloGram = new UnitOfMeasure(lang,
-                "gr",
-                "Kilogram",
-                Greatness.MASS);
-        return kiloGram.getShortId();
-    };
-
     @Test
     public void findByBarcode_givenItemExists_shouldReturnItemA(){
-        Item    itemPayload,
-                itemExpected,
-                itemListActual;
-        String  barcode = new String ("1234567890123");
-
-        itemPayload = new Item(
-                "1234567890123",
-                "Product A",
-                180,
-                getKiloGramShortId(Languages.PT_BR),
-                "http://www.picture.com/itemActual",
-                18,
-                getKiloGramShortId(Languages.PT_BR),
-                100,
-                "Nothing do say");
+        Item itemPayload = getPayload();
         repository.save(itemPayload);
-
-        itemExpected = itemPayload;
-        itemListActual = repository.findByBarcode(barcode);
-
-        assertReflectionEquals(itemExpected, itemListActual);
+        assertReflectionEquals(itemPayload, repository.findByBarcode(itemPayload.getBarcode()));
     }
 
     @Test
-    public void existsByBarcode_givenItemExists_sholdReturnTrue(){
-        Item    itemPayload;
-        Boolean itemExpected,
-                itemListActual;
-        String  barcode = new String ("1234567890123");
-
-        itemPayload = new Item(
-                "1234567890123",
-                "Product A",
-                180,
-                getKiloGramShortId(Languages.PT_BR),
-                "http://www.picture.com/itemActual",
-                18,
-                getKiloGramShortId(Languages.PT_BR),
-                100,
-                "Nothing to say.");
+    public void existsByBarcode_givenItemExists_shouldReturnTrue(){
+        Item itemPayload = getPayload();
         repository.save(itemPayload);
-
-        itemExpected = true;
-        itemListActual = repository.existsByBarcode(barcode);
-
-        Assert.assertEquals(itemExpected, itemListActual);
+        Assert.assertEquals( true, repository.existsByBarcode(itemPayload.getBarcode()) );
     }
-    @Test
-    public void findByIndex_givenItemExists_sholdReturnItem(){
-        Item    itemPayload,
-                itemExpected,
-                itemListActual;
-        Long    index = new Long(1);
 
-        itemPayload = new Item(
-                "1234567890123",
-                "Product A",
-                180,
-                getKiloGramShortId(Languages.PT_BR),
-                "http://www.picture.com/itemActual",
-                18,
-                getKiloGramShortId(Languages.PT_BR),
-                100,
-                "Nothing to say.");
+    @Test
+    public void findByIndex_givenItemExists_shouldReturnItem(){
+        Item itemPayload = getPayload();
         repository.save(itemPayload);
-
-        itemExpected = itemPayload;
-        itemListActual = repository.findByItemId(index);
-
-        assertReflectionEquals(itemExpected, itemListActual);
+        assertReflectionEquals(itemPayload, repository.findByItemId(1L));
     }
-    @Test
-    public void getter_setter(){
-        Item    actualItem,
-                expectedItem;
 
-        actualItem = new Item(
+    public Item getPayload(){
+        Item item = new Item(
                 "1234567890123",
                 "Product A",
                 180,
-                getKiloGramShortId(Languages.PT_BR),
+                "gr",
                 "http://www.picture.com/itemActual",
                 18,
-                getKiloGramShortId(Languages.PT_BR),
+                "gr",
                 100,
                 "Nothing to say.");
-        expectedItem = new Item();
 
-        expectedItem.setBarcode(actualItem.getBarcode());
-        expectedItem.setIdentification(actualItem.getIdentification());
-        expectedItem.setImage(actualItem.getImage());
-        expectedItem.setItemId(actualItem.getItemId());
-        expectedItem.setQuantity(actualItem.getQuantity());
-        expectedItem.setUnitOfMeasure(actualItem.getUnitOfMeasure());
-        expectedItem.setServSize(actualItem.getServSize());
-        expectedItem.setServUom(actualItem.getServUom());
-        expectedItem.setServCalories(actualItem.getServCalories());
-        expectedItem.setDisclaimer(actualItem.getDisclaimer());
+        Item itemPayload = new Item();
+        itemPayload.setBarcode(item.getBarcode());
+        itemPayload.setIdentification(item.getIdentification());
+        itemPayload.setImage(item.getImage());
+        itemPayload.setItemId(item.getItemId());
+        itemPayload.setQuantity(item.getQuantity());
+        itemPayload.setUnitOfMeasure(item.getUnitOfMeasure());
+        itemPayload.setServSize(item.getServSize());
+        itemPayload.setServUom(item.getServUom());
+        itemPayload.setServCalories(item.getServCalories());
+        itemPayload.setDisclaimer(item.getDisclaimer());
+
+        return  itemPayload;
     }
 
     protected static Timestamp now( ){
