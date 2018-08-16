@@ -12,5 +12,5 @@ public interface NutriFactsRepository extends PagingAndSortingRepository<NutriFa
 
     List<NutriFacts> findByItemId(@Param("itemId") Long itemId);
 
-    NutriFacts findByItemIdAndNutrifactId(@Param("itemId") Long itemId, @Param("NutrifactId") Long NutrifactId);
+    NutriFacts findByItemIdAndNutrientId(@Param("itemId") Long itemId, @Param("nutrientId") Long nutrientId);
 }

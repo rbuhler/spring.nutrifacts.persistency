@@ -8,7 +8,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "item", path = "item")
 public interface ItemRepository extends PagingAndSortingRepository<Item, Long> {
 
-    Item findByItemId(@Param("itemId") Long itemId);
+    Item findByIndex(@Param("index") Long index);
 
     Item findByBarcode(@Param("barcode") String barcode);
     Boolean existsByBarcode(@Param("barcode") String barcode);

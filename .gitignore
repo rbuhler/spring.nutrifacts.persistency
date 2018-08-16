@@ -3,6 +3,7 @@ target/
 
 ## GENERAL ##
 *.bat
+.DS_Store
 
 ### STS ###
 .apt_generated

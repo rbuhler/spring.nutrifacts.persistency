@@ -25,16 +25,11 @@ public class NutriFactsRepositoryTest {
     private NutriFactsRepository repository;
 
     @Test
-    public void findByItem_givenAnItem_shouldReturnANutrifact(){
-        List<NutriFacts> nutriFactsPayloadList = getPayloadList();
-        repository.save(nutriFactsPayloadList.get(0));
-        repository.save(nutriFactsPayloadList.get(1));
-        repository.save(nutriFactsPayloadList.get(2));
+    public void findByItem_givenAnItem_shouldReturnOneNutrifact(){
+        NutriFacts nutriFactsPayload = getPayload();
+        repository.save(nutriFactsPayload );
 
-        for (Integer x = 0; x < nutriFactsPayloadList.size(); x++ ){
-            List<NutriFacts> nutriFactsActual = repository.findByItemId( x.longValue()+1L );
-            assertReflectionEquals(nutriFactsPayloadList.get(x), nutriFactsActual.get(0));
-        }
+        Assert.assertEquals( 1, repository.findByItemId( 1L ).size() );
     }
 
     @Test
@@ -44,16 +39,21 @@ public class NutriFactsRepositoryTest {
         repository.save(nutriFactsPayloadList.get(1));
         repository.save(nutriFactsPayloadList.get(2));
 
-        List<NutriFacts> nutriFactsActual = repository.findByItemId( 1L );
+         Assert.assertEquals( 2, repository.findByItemId( 2L ).size() );
+    }
 
-        for (Integer x = 0; x < nutriFactsActual.size(); x++ ){
-            Assert.assertEquals( 2, nutriFactsActual.size() );
-        }
+    @Test
+    public void findByItemAndNutrient_givenAnItemAndNutrient_shouldReturnANutrifacts(){
+        List<NutriFacts> nutriFactsPayloadList = getPayloadList();
+        repository.save(nutriFactsPayloadList.get(0));
+        repository.save(nutriFactsPayloadList.get(1));
+        repository.save(nutriFactsPayloadList.get(2));
+
+        assertReflectionEquals(nutriFactsPayloadList.get(1), repository.findByItemIdAndNutrientId( 3L,20L ) );
     }
 
     public NutriFacts getPayload(){
         NutriFacts nutrifacts = new NutriFacts(
-                1L,
                 1L,
                 10L,
                 10,
@@ -62,8 +62,7 @@ public class NutriFactsRepositoryTest {
 
         NutriFacts nutrifactsPayload = new NutriFacts();
         nutrifactsPayload.setItemId(nutrifacts.getItemId());
-        nutrifactsPayload.setNutrifactId(nutrifacts.getNutrifactId());
-        nutrifactsPayload.setNutrient(nutrifacts.getNutrient());
+        nutrifactsPayload.setNutrientId(nutrifacts.getNutrientId());
         nutrifactsPayload.setQuantity(nutrifacts.getQuantity());
         nutrifactsPayload.setUnitOfMeasure(nutrifacts.getUnitOfMeasure());
         nutrifactsPayload.setDaily_value(nutrifacts.getDaily_value());
@@ -76,27 +75,24 @@ public class NutriFactsRepositoryTest {
         NutriFacts nutriFacts = new NutriFacts();
         List nutriFactsPayloadList = new ArrayList<NutriFacts>();
 
-        nutriFacts.setItemId(1L);
-        nutriFacts.setNutrifactId(1L);
-        nutriFacts.setNutrient(10L);
+        nutriFacts.setItemId(2L);
+        nutriFacts.setNutrientId(10L);
         nutriFacts.setQuantity(10);
-        nutriFacts.setUnitOfMeasure("gr");
+        nutriFacts.setUnitOfMeasure("ml");
         nutriFacts.setDaily_value((float) 25.5);
         nutriFactsPayloadList.add(nutriFacts);
 
         nutriFacts = new NutriFacts();
-        nutriFacts.setItemId(2L);
-        nutriFacts.setNutrifactId(3L);
-        nutriFacts.setNutrient(20L);
+        nutriFacts.setItemId(3L);
+        nutriFacts.setNutrientId(20L);
         nutriFacts.setQuantity(20);
         nutriFacts.setUnitOfMeasure("gr");
         nutriFacts.setDaily_value((float) 45.5);
         nutriFactsPayloadList.add(nutriFacts);
 
         nutriFacts = new NutriFacts();
-        nutriFacts.setItemId(1L);
-        nutriFacts.setNutrifactId(2L);
-        nutriFacts.setNutrient(15L);
+        nutriFacts.setItemId(2L);
+        nutriFacts.setNutrientId(15L);
         nutriFacts.setQuantity(60);
         nutriFacts.setUnitOfMeasure("km");
         nutriFacts.setDaily_value((float) 33.87);

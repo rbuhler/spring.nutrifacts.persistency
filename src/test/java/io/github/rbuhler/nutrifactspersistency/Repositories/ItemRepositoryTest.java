@@ -41,7 +41,7 @@ public class ItemRepositoryTest {
     public void findByIndex_givenItemExists_shouldReturnItem(){
         Item itemPayload = getPayload();
         repository.save(itemPayload);
-        assertReflectionEquals(itemPayload, repository.findByItemId(1L));
+        assertReflectionEquals(itemPayload, repository.findByIndex(1L));
     }
 
     public Item getPayload(){
@@ -60,7 +60,7 @@ public class ItemRepositoryTest {
         itemPayload.setBarcode(item.getBarcode());
         itemPayload.setIdentification(item.getIdentification());
         itemPayload.setImage(item.getImage());
-        itemPayload.setItemId(item.getItemId());
+        itemPayload.setIndex(item.getIndex());
         itemPayload.setQuantity(item.getQuantity());
         itemPayload.setUnitOfMeasure(item.getUnitOfMeasure());
         itemPayload.setServSize(item.getServSize());

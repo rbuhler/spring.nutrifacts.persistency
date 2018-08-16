@@ -8,7 +8,7 @@ public class Item extends BaseEntity{
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column
-    private Long itemId;
+    private Long index;
 
     @Column
     private String barcode;
@@ -46,8 +46,8 @@ public class Item extends BaseEntity{
         this.disclaimer = disclaimer;
     }
 
-    public Long getItemId() { return itemId; }
-    public void setItemId(Long itemId) { this.itemId = itemId; }
+    public Long getIndex() { return index; }
+    public void setIndex(Long index) { this.index = index; }
 
     public String getBarcode() { return barcode; }
     public void setBarcode(String barcode) { this.barcode = barcode; }

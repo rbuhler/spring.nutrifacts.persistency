@@ -1,19 +1,17 @@
 package io.github.rbuhler.nutrifactspersistency.Entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
-//@IdClass(NutriFacts.ItemNutriFactsId.class)
-public class NutriFacts extends BaseEntity{
+@IdClass(NutriFacts.NutriFactsId.class)
+public class NutriFacts extends BaseEntity {
     @Id
-    @Column
     private Long itemId;
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column
-    private Long nutrifactId;
+    @Id
+    private Long nutrientId;
 
-    @Column
-    private Long nutrient;
     @Column
     private float quantity;
     @Column
@@ -23,47 +21,45 @@ public class NutriFacts extends BaseEntity{
 
 //    /** TODO
 //     * https://stackoverflow.com/questions/12930935/illegalargumentexception-expecting-idclass-mapping */
-//    public static class ItemNutriFactsId implements Serializable{
-//        private Long itemId;
-//        private Long nutrientId;
-//
-//        public ItemNutriFactsId(){}
-//        public ItemNutriFactsId(Long itemId, Long nutrifactId){
-//            this.itemId = itemId;
-//            this.nutrientId = nutrifactId;
-//        }
-//        @Override
-//        public boolean equals(Object o){
-//            if(o == this){
-//                return true;
-//            }
-//            if(!(o instanceof NutriFacts)){
-//                return false;
-//            }
-//            NutriFacts nutriFacts = (NutriFacts)o;
-//            return
-//                    Objects.equals(itemId, nutriFacts.getItemId()) &&
-//                    Objects.equals(nutrientId, nutriFacts.getNutrifactId());
-//        }
-//        @Override
-//        public int hashCode(){
-//            return Objects.hash(itemId, nutrientId);
-//        }
-//    }
+    public static class NutriFactsId implements Serializable{
+        private Long itemId;
+        private Long nutrientId;
+
+        public NutriFactsId(){}
+        public NutriFactsId(Long itemId, Long nutrientId){
+            this.itemId = itemId;
+            this.nutrientId = nutrientId;
+        }
+        @Override
+        public boolean equals(Object o){
+            if(o == this){
+                return true;
+            }
+            if(!(o instanceof NutriFacts)){
+                return false;
+            }
+            NutriFacts nutriFacts = (NutriFacts)o;
+            return
+                    Objects.equals(itemId, nutriFacts.getItemId()) &&
+                    Objects.equals(nutrientId, nutriFacts.getNutrientId());
+        }
+        @Override
+        public int hashCode(){
+            return Objects.hash(itemId, nutrientId);
+        }
+    }
 
     public NutriFacts(){}
 
     public NutriFacts(
             Long itemId,
-            Long nutrifactId,
-            Long nutrient,
+            Long nutrientId,
             float quantity,
             String unitOfMeasure,
             float daily_value
     ){
         this.itemId = itemId;
-        this.nutrifactId = nutrifactId;
-        this.nutrient = nutrient;
+        this.nutrientId = nutrientId;
         this.quantity = quantity;
         this.unitOfMeasure = unitOfMeasure;
         this.daily_value = daily_value;
@@ -76,18 +72,11 @@ public class NutriFacts extends BaseEntity{
         this.itemId = itemId;
     }
 
-    public Long getNutrifactId() {
-        return nutrifactId;
+    public Long getNutrientId() {
+        return nutrientId;
     }
-    public void setNutrifactId(Long nutrifactId) {
-        this.nutrifactId = nutrifactId;
-    }
-
-    public Long getNutrient() {
-        return nutrient;
-    }
-    public void setNutrient(Long nutrient) {
-        this.nutrient = nutrient;
+    public void setNutrientId(Long nutrient) {
+        this.nutrientId = nutrient;
     }
 
     public float getQuantity() {
