@@ -1,0 +1,4 @@
+applications:
+- name: nutrifact-persistency
+  memory: 1G
+  path: target\nutrifacts-persistency-0.0.1-SNAPSHOT.war
