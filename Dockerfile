@@ -1,8 +1,19 @@
 # Dockerfile
 FROM tomcat:8.0-alpine
+#FROM tomcat:9.0.10-jre8-alpine
+#FROM tomcat:9.0.11-jre8-alpine
+
+# getting started
+RUN clear
 
 VOLUME /tmp
 
-ADD target/*.war /usr/local/tomcat/webapps/
+# shell commands
+RUN ls
 
-ENTRYPOINT ["catalina.sh", "jpda", "run"]
+# Tomcat specific
+COPY tomcat/tomcat-users.xml conf
+
+ADD target/*.war webapps
+
+RUN java -version
