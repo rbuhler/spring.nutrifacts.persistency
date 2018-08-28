@@ -1,19 +1,19 @@
 # Dockerfile
-FROM tomcat:8.0-alpine
-#FROM tomcat:9.0.10-jre8-alpine
-#FROM tomcat:9.0.11-jre8-alpine
+FROM openjdk:8-jdk
 
-# getting started
-RUN clear
-
+# Getting started
 VOLUME /tmp
 
 # shell commands
 RUN ls
 
-# Tomcat specific
-COPY tomcat/tomcat-users.xml conf
+# Application
+ADD target/*.jar nutrifacts-persistency.jar
 
-ADD target/*.war webapps
+# JAVA specifics
+CMD java $JAVA_OPTS -jar /nutrifacts-persistency.jar
 
 RUN java -version
+
+# Others
+ENTRYPOINT ["java","-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n","-jar","/nutrifacts-persistency.jar"]

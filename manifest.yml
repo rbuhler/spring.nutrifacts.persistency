@@ -1,4 +1,6 @@
 applications:
 - name: nutrifact-persistency
   memory: 1G
-  path: target\nutrifacts-persistency-0.0.1-SNAPSHOT.war
+  path: target/nutrifacts-persistency.jar
+  health-check-type: http
+  health-check-http-endpoint: /health

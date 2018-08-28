@@ -1,8 +1,10 @@
 version: '3'
 services:
-  web:
+  persistency:
     build: .
     ports:
      - "8080:8080"
      - "8000:8000"
-     - "5000:5000"
+    environment:
+      JPDA_ADDRESS: 8000
+      JPDA_TRANSPORT: dt_socket

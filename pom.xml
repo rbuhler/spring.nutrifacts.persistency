@@ -6,9 +6,9 @@
 	<groupId>io.github.rbuhler</groupId>
 	<artifactId>nutrifacts-persistency</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
-	<name>Nutrifacts-Persistency</name>
+	<name>nutrifacts-persistency</name>
 	<description>Peristency for Nutrifacts App</description>
 
 	<parent>
