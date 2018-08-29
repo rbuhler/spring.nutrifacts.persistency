@@ -1,50 +1,70 @@
 package io.github.rbuhler.nutrifactspersistency.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import io.github.rbuhler.nutrifactspersistency.Enum.Greatness;
+import io.github.rbuhler.nutrifactspersistency.Enum.Languages;
+
+import javax.persistence.*;
 
 @Entity
-public class UnitOfMeasure {
+public class UnitOfMeasure extends BaseEntity{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
+    private Long index;
+
+    @Column
+    private Languages lang;
+    @Column
     private String shortId;
+    @Column
     private String description;
-    private String greatness;
+    @Column
+    private Greatness greatness;
 
-    protected UnitOfMeasure(){}
-
-    public UnitOfMeasure( String shortId, String description, String greatness){
+    public UnitOfMeasure() { }
+    public UnitOfMeasure(
+            Languages lang,
+            String shortId,
+            String description,
+            Greatness greatness
+    ){
+        this.lang = lang;
         this.shortId = shortId;
         this.description = description;
         this.greatness = greatness;
     }
 
-    public String getShortId() {
-        return shortId;
+    public Long getIndex() {
+        return index;
+    }
+    public void setIndex(Long index) { this.index = index; }
+
+    public void setLang(Languages lang) {
+        this.lang = lang;
+    }
+    public Languages getLang() {
+        return lang;
     }
 
     public void setShortId(String shortId) {
         this.shortId = shortId;
     }
-
-    public String getDescription() {
-        return description;
+    public String getShortId() {
+        return shortId;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public String getGreatness() {
-        return greatness;
+    public String getDescription() {
+        return description;
     }
 
-    public void setGreatness(String greatness) {
+    public void setGreatness(Greatness greatness) {
         this.greatness = greatness;
     }
-
+    public Greatness getGreatness() {
+        return greatness;
+    }
 }

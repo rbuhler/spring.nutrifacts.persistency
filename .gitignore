@@ -2,6 +2,8 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 
 ## GENERAL ##
+*.bat
+.DS_Store
 
 ### STS ###
 .apt_generated
